@@ -24,11 +24,11 @@
 
 ## チャレンジ要素一覧
 
-<https://docs.google.com/spreadsheets/d/1Kl_0o-IP-Us3cmI4jw7PUjn-a2bRgNkDeF62Huo2nUQ/edit?usp=sharing>
+https://docs.google.com/spreadsheets/d/1Kl_0o-IP-Us3cmI4jw7PUjn-a2bRgNkDeF62Huo2nUQ/edit?usp=sharing
 
 ## 開発環境
 
-- OS：Linux(CentOS)
+- OS：macOS Monterey
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
