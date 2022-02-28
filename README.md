@@ -36,5 +36,5 @@
 
 ## 使用素材
 
-- ロゴ　https://www.designevo.com/
-- 画像　https://o-dan.net/ja/
+- ロゴ　designevo https://www.designevo.com/
+- 画像　O-DAN https://o-dan.net/ja/
