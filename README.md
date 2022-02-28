@@ -1,4 +1,5 @@
 # Searchct:mag:
+（サーチクト）　search+projectの造語
 
 ## サイト概要
 
