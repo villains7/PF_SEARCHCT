@@ -22,11 +22,11 @@
 過去に似た事例がないかどうかの確認
 
 ## 設計書
-- ER図　https://drive.google.com/file/d/15jDzAU2dbFWG4BmP9GNPHy5TwefpPM1Q/view?usp=sharing
-- ワイヤーフレーム　https://drive.google.com/file/d/1q8KFudUMlGYQFVAeNaktf5vHQjz59NYy/view?usp=sharing
-- ページ遷移　https://drive.google.com/file/d/10etuiOOo9gbzMPNB5poMtB_Iz6SMiqBG/view?usp=sharing
-- テーブル設計書　https://docs.google.com/spreadsheets/d/1uf9dMkAINnrEdVyfYy_mQfbXB9yc6ii6b71yxRQVX80/edit?usp=sharing
-- アプリケーション詳細設計　https://docs.google.com/spreadsheets/d/106W9HDkhu-HHqtvDSQGfdeS2zDX-CZfxpEsfn_1pogc/edit?usp=sharing
+- ER図<br>https://drive.google.com/file/d/15jDzAU2dbFWG4BmP9GNPHy5TwefpPM1Q/view?usp=sharing
+- ワイヤーフレーム<br>https://drive.google.com/file/d/1q8KFudUMlGYQFVAeNaktf5vHQjz59NYy/view?usp=sharing
+- ページ遷移<br>https://drive.google.com/file/d/10etuiOOo9gbzMPNB5poMtB_Iz6SMiqBG/view?usp=sharing
+- テーブル設計書<br>https://docs.google.com/spreadsheets/d/1uf9dMkAINnrEdVyfYy_mQfbXB9yc6ii6b71yxRQVX80/edit?usp=sharing
+- アプリケーション詳細設計<br>https://docs.google.com/spreadsheets/d/106W9HDkhu-HHqtvDSQGfdeS2zDX-CZfxpEsfn_1pogc/edit?usp=sharing
 
 ## チャレンジ要素一覧
 
