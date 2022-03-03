@@ -2,29 +2,51 @@
   <div class="row">
     <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
       <div class="card shadow">
-      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-      <%= render "public/shared/error_messages", resource: resource %>
-
-  <div class="field">
-   <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス"%>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
+          <div class="form-row">
+            <div class="col-md-4 mb-3">
+              <%= f.text_field :last_name,autofocus: true, autocomplete: "last_name",placeholder: "姓" %>
+            </div>
+            <div class="col-md-4 mb-3">
+              <%= f.text_field :first_name,autofocus: true, autocomplete: "first_name",placeholder: "名" %>
+            </div>
+          </div>
+          <div class="field">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス"%>
+          </div>
+          <div class="field">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: "パスワード" %>
+          </div>
+          <div class="form-group">
+            <%= f.select :section,[["営業部","営業部"],["業務部","業務部"],["経理部","経理部"]], include_blank: "所属部署"%>
+          </div>
+          <div class="form-group">
+            <%= f.select :region,[["本社","本社"],["北海道","北海道"],["東北","東北"],["中部","中部"],["近畿","近畿"],["中国四国","中国四国"],["九州","九州"]], include_blank: "地域"%>
+          </div>
+          <div class="actions">
+            <%= f.submit "Sign up",class:"btn btn-success w-25" %>
+          </div>
+          <% end %>
+          <div class="text-center">
+            <%= render "public/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
 
-<%= render "public/shared/links" %>
+
+
+
+
+
+
+
+
+
+
+

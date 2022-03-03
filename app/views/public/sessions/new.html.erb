@@ -7,10 +7,10 @@
         </div>
           <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="text-center field">
-          <i class="fa-regular fa-envelope fa-2x"></i><%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス",class:"w-50"%>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス",class:"w-50"%>
         </div>
         <div class="text-center field">
-          <i class="fa-regular fa-key-skeleton fa-2x"></i><%= f.password_field :password, autocomplete: "new-password",placeholder: "パスワード",class:"w-50"%>
+          <%= f.password_field :password, autocomplete: "new-password",placeholder: "パスワード",class:"w-50"%>
         </div><br>
         <div class="text-center actions">
           <%= f.submit "Log in",class:"btn btn-primary w-25"%>

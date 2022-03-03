@@ -14,6 +14,7 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
       t.string :section,null: false, default: ""
       t.text :carrer,null: false, default: ""
       t.string :word,null: false, default: ""
+      t.string :region,null: false, default: ""
 
       ## Recoverable
       t.string   :reset_password_token

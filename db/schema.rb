@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2022_03_03_051244) do
     t.string "section", default: "", null: false
     t.text "carrer", default: "", null: false
     t.string "word", default: "", null: false
+    t.string "region", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
