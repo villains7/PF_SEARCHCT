@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+      <div class="card shadow">
+        <div class="text-center">
+          <%= image_tag'logo.png',size: '400x400'%>
+        </div>
+          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="text-center field">
+          <i class="fa-regular fa-envelope fa-2x"></i><%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス",class:"w-50"%>
+        </div>
+        <div class="text-center field">
+          <i class="fa-regular fa-key-skeleton fa-2x"></i><%= f.password_field :password, autocomplete: "new-password",placeholder: "パスワード",class:"w-50"%>
+        </div><br>
+        <div class="text-center actions">
+          <%= f.submit "Log in",class:"btn btn-primary w-25"%>
+        </div><br>
+          <% end %>
+        <div class="text-center">
+        <%= render "public/shared/links" %><br>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
