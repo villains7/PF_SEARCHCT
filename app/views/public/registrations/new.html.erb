@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+      <div class="card shadow">
+        <div class="text-center">
+          <%= image_tag'logo.png',size: '400x400'%>
+        </div>
+        <%= form_with(model: resource, scope: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
+          <div class="form-row justify-content-center">
+            <div class="text-center col-md-4 mb-3">
+              <%= f.text_field :last_name,autofocus: true, autocomplete: "last_name",placeholder: "姓" %>
+            </div>
+            <div class="text-center col-md-4 mb-3">
+              <%= f.text_field :first_name,autofocus: true, autocomplete: "first_name",placeholder: "名" %>
+            </div>
+          </div>
+          <div class="text-center field mb-3">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス",class:"w-50"%>
+          </div>
+          <div class="text-center field mb-3">
+            <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: "パスワード",class:"w-50" %>
+          </div>
+          <div class="form-row justify-content-center">
+            <div class="col-auto mb-3">
+            <%= f.select :section,[["営業部","営業部"],["業務部","業務部"],["経理部","経理部"]], include_blank: "所属部署"%>
+            </div>
+            <div class="col-auto mb-3">
+            <%= f.select :region,[["本社","本社"],["北海道","北海道"],["東北","東北"],["中部","中部"],["近畿","近畿"],["中国四国","中国四国"],["九州","九州"]], include_blank: "地域"%>
+            </div>
+          </div>
+          <div class="text-center actions mb-3">
+            <%= f.submit "Sign up",class:"btn btn-success w-25" %>
+          </div>
+          <% end %>
+          <div class="text-center actions mb-3">
+            <%= render "public/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
