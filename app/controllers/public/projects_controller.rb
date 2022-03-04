@@ -1,10 +1,12 @@
 class Public::ProjectsController < ApplicationController
+  before_action :authenticate_member!
   def new
     @project = Project.new
   end
 
   def create
     @project = Project.new(project_params)
+    @project.member_id = current_member.id
     if @project.save
      redirect_to '/'#リダイレクト先検討
     else
@@ -22,6 +24,7 @@ class Public::ProjectsController < ApplicationController
   end
 
   private
+
   def project_params
     params.require(:project).permit(:title, :caption, :region,  :year,  :month, :salesman,  :project_image)
   end
