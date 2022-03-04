@@ -5,13 +5,13 @@
         <div class="text-center">
           <%= image_tag'logo.png',size: '400x400'%>
         </div>
-          <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-        <div class="text-center field">
+          <%= form_with(model: resource, scope: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="text-center field mb-3">
           <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス",class:"w-50"%>
         </div>
-        <div class="text-center field">
+        <div class="text-center field mb-3">
           <%= f.password_field :password, autocomplete: "new-password",placeholder: "パスワード",class:"w-50"%>
-        </div><br>
+        </div>
         <div class="text-center actions">
           <%= f.submit "Log in",class:"btn btn-primary w-25"%>
         </div><br>
