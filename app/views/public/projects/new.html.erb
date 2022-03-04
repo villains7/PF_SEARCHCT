@@ -1,6 +1,6 @@
 <div class= "container">
       <h4>案件投稿ページです</h4>
-        <%= form_with model: @project, url: public_projects_path,method: :post do |f| %>
+        <%= form_with model: @project, url: projects_path,method: :post do |f| %>
         <!--ラベルと遷移先要検討-->
         <div class= "row justify-content-center">
           <%= f.text_field :title ,placeholder: "案件タイトル"%>
