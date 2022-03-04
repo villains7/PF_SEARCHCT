@@ -13,7 +13,8 @@ Rails.application.routes.draw do
    resources :members
     resource :members, only:[:edit]
    resources :projects do
-     resource :comments,only:[:create,:destroy]
+     resource :thanks, only:[:create,:destroy]
+     resource :comments, only:[:create,:destroy]
     end
   end
 

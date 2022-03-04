@@ -4,4 +4,8 @@ class Project < ApplicationRecord
   has_many :thanks, dependent: :destroy
   has_one_attached :project_image
   #タグ実装したら追加記載
+
+  def thanked_by?(member)
+    thanks.exists?(member_id: member.id)
+  end
 end
