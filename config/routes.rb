@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   root to: "homes#top"
 
 
-  namespace :public do
+  scope module: :public do
    get "top" => "homes#top"
    get "search" => "searches#search"
    resources :members

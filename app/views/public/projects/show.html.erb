@@ -27,6 +27,7 @@
       <%= form_with model:[@project,@comment] do |f| %>
        <%= f.text_area :comment,placeholder: "コメント" %>
        <%= f.submit "送信",class: "btn btn-success" %>
+      <% end %>
     </div>
   </div>
 </div>
