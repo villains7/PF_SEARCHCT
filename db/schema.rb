@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(version: 2022_03_03_051244) do
     t.text "caption", default: "", null: false
     t.string "region", default: "", null: false
     t.string "year", default: "", null: false
+    t.string "month", default: "", null: false
     t.string "salesman", default: "", null: false
     t.string "project_image_url"
     t.datetime "created_at", precision: 6, null: false

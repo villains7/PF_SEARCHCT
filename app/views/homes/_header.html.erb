@@ -10,6 +10,15 @@
             <li class="nav-item">
               <%= link_to "ログイン",new_member_session_path%>
             </li>
+            <li class="nev-item">
+              <%= link_to "新規登録",new_public_project_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "詳細検索",public_search_path %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト",destroy_member_session_path,method: :delete %>
+            </li>
           </ul>
         </div>
     </div>
