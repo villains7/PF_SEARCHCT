@@ -1,2 +1,32 @@
-<h1>Public::Projects#show</h1>
-<p>Find me in app/views/public/projects/show.html.erb</p>
+<div class= "container">
+  <div class= "row">
+    <div>
+      タイトル：<%= @project.title %>
+    </div>
+    <div>
+      部署：<%= @project.region %>
+    </div>
+    <div>
+      担当営業：<%= @project.salesman %>
+    </div>
+    <div>
+      年月：<%= @project.year %><%= @project.month %>
+    </div>
+    <div>
+      概要：<%= @project.caption %>
+    </div>
+    <!--<div>-->
+    <!--  画像：<#%= image_tag @project.project_image %>-->
+    <!--</div>-->
+
+
+
+
+
+    <div>
+      <%= form_with model:[@project,@comment] do |f| %>
+       <%= f.text_area :comment,placeholder: "コメント" %>
+       <%= f.submit "送信",class: "btn btn-success" %>
+    </div>
+  </div>
+</div>

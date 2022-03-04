@@ -9,10 +9,12 @@ Rails.application.routes.draw do
 
   namespace :public do
    get "top" => "homes#top"
+   get "search" => "searches#search"
    resources :members
     resource :members, only:[:edit]
-   resources :projects#destroyはアドミンだけにする？
-   get "search" => "searches#search"
+   resources :projects do
+     resource :comments,only:[:create,:destroy]
+    end
   end
 
 

@@ -5,8 +5,11 @@ class Public::ProjectsController < ApplicationController
 
   def create
     @project = Project.new(project_params)
-    @project.save
-    redirect_to '/'#リダイレクト先検討
+    if @project.save
+     redirect_to '/'#リダイレクト先検討
+    else
+      render :new
+    end
   end
 
   def index
@@ -14,6 +17,8 @@ class Public::ProjectsController < ApplicationController
   end
 
   def show
+    @project = Project.find(params[:id])
+    @comment = Comment.new
   end
 
   private
