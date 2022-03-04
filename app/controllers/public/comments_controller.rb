@@ -1,10 +1,10 @@
 class Public::CommentsController < ApplicationController
 
   def create
-    project = Projest.find(params[:project_id])
-    comment = current_member.comments.new(comment_params)
-    comment.project_id = project.id
-    comment.save
+    @project = Project.find(params[:project_id])
+    @comment = current_member.comments.new(comment_params)
+    @comment.project_id = @project.id
+    @comment.save
     redirect_to request.referer
   end
 

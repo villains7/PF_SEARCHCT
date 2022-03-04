@@ -1,0 +1,4 @@
+<% project.comments.each do |comment| %>
+ <%= comment.member.last_name %><%= comment.member.first_name %>
+ <%= comment.comment %>
+ <% end %>
