@@ -2,17 +2,17 @@
   <div class= "card shadow">
     <div class= "card-body">
       <div class= "input-group">
-        <h5 class= "card-text">詳細検索フォーム</h5>
-         <%= form_with url: search_path, method: :get, local: true do |f| %>
-         <%= f.text_field :content ,placeholder: "キーワード"%>
-         <%= f.submit '検索',class: "btn btn-info" %>
-         <% end %>
+        <h5 class= "card-text">詳細検索</h5>
+         <%= render 'form' %>
       </div>
     </div>
   </div>
   <div class= "card shadow">
     <div class= "card-body">
-      <h5 class= "card-text">検索結果出す</h5>
+      <h5 class= "card-text">検索結果</h5>
+      <% if @records.count == 0 %>
+      <p>該当案件はありません</p>
+      <% end %>
         <%= render 'index',project: @records %>
     </div>
   </div>
