@@ -1,2 +1,28 @@
-<h1>Public::Projects#new</h1>
-<p>Find me in app/views/public/projects/new.html.erb</p>
+<div class= "container">
+  <div class= "card shadow">
+    <div class= "card-body">
+      <h4 class= "mt-3 ml-3">案件登録</h4>
+        <%= form_with model: @project, url: projects_path,method: :post do |f| %>
+        <!--ラベルと遷移先要検討--><!--セレクトボックスの位置修正する-->
+        <div class= "card-text text-center mb-3">
+          <%= f.text_field :title ,placeholder: "案件タイトル",class: "w-75"%>
+        </div>
+        <div class= "card-text d-flex justify-content-center mb-3">
+          <p class= "mr-3"><%= f.select :region,[["本社","本社"],["北海道","北海道"],["東北","東北"],["中部","中部"],["近畿","近畿"],["中国四国","中国四国"],["九州","九州"]], include_blank: "地域"%></p>
+          <p class= "mr-3"><%= f.text_field :salesman,placeholder: "担当営業" %></p>
+          <p class= "mr-3"><%= f.select :year,[["2022年","2022年"]], include_blank: "案件発生年"%></p>
+          <p class= "mr-3"><%= f.select :month,[["1月","1月"]], include_blank: "案件発生月"%></p>
+        </div>
+        <div class= "row justify-content-center mb-3">
+        <%= f.text_area :caption,rows: '15',placeholder: "案件詳細説明をここに",class: "w-75" %>
+        </div>
+        <div class= "row justify-content-center mb-3">
+        <%= f.file_field :project_image,accept: "image/*" %>
+        </div>
+        <div class= "row justify-content-center mb-3">
+        <%= f.submit "案件登録",class: "btn btn-success w-75"%>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>

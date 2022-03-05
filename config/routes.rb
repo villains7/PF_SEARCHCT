@@ -7,12 +7,15 @@ Rails.application.routes.draw do
   root to: "homes#top"
 
 
-  namespace :public do
+  scope module: :public do
    get "top" => "homes#top"
+   get "search" => "searches#search"
    resources :members
     resource :members, only:[:edit]
-   resources :projects#destroyはアドミンだけにする？
-   get "search" => "searches#search"
+   resources :projects do
+     resource :thanks, only:[:create,:destroy]
+     resource :comments, only:[:create,:destroy]
+    end
   end
 
 

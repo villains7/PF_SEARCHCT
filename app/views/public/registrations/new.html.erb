@@ -19,14 +19,14 @@
             <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス",class:"w-50"%>
           </div>
           <div class="text-center field mb-3">
-            <%= f.password_field :password_confirmation, autocomplete: "new-password",placeholder: "パスワード",class:"w-50" %>
+            <%= f.password_field :password, autocomplete: "new-password",placeholder: "パスワード",class:"w-50" %>
           </div>
           <div class="form-row justify-content-center">
             <div class="col-auto mb-3">
-            <%= f.select :section,[["営業部","営業部"],["業務部","業務部"],["経理部","経理部"]], include_blank: "所属部署"%>
+            <%= f.select :region,[["本社","本社"],["北海道","北海道"],["東北","東北"],["中部","中部"],["近畿","近畿"],["中国四国","中国四国"],["九州","九州"]], include_blank: "地域"%>
             </div>
             <div class="col-auto mb-3">
-            <%= f.select :region,[["本社","本社"],["北海道","北海道"],["東北","東北"],["中部","中部"],["近畿","近畿"],["中国四国","中国四国"],["九州","九州"]], include_blank: "地域"%>
+            <%= f.select :section,[["営業部","営業部"],["業務部","業務部"],["経理部","経理部"]], include_blank: "所属部署"%>
             </div>
           </div>
           <div class="text-center actions mb-3">

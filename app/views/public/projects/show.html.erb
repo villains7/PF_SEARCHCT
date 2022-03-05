@@ -1,2 +1,31 @@
-<h1>Public::Projects#show</h1>
-<p>Find me in app/views/public/projects/show.html.erb</p>
+<div class= "container">
+  <div class= "card shadow">
+    <div class= "card body">
+      <h4 class= "card-title mt-3 ml-3">
+       <%= @project.title %>
+      </h4>
+      <div class= "card-text d-flex flex-row ml-3">
+        <p class= "mr-3">部署：<%= @project.region %></p>
+        <p>担当営業：<%= @project.salesman %></p>
+      </div>
+      <div class= "card-text ml-3 mb-3">
+        <%= @project.year %><%= @project.month %>
+      </div>
+      <div class= "card-text ml-3 mb-3">
+        概要：<%= @project.caption %>
+      </div>
+      <div class= "card-item ml-3 mb-3">
+        <%= image_tag @project.project_image,size: '300x400' %>
+      </div>
+      <div class= "card-item text-right mr-3 mb-3">
+        <%= render "public/thanks/btn",project: @project %>
+      </div>
+      <div class= "card-item ml-3 mb-3">
+        <%= render "public/comments/index",project: @project %>
+      </div>
+      <div class= "card-item ml-3 mb-3 mr-3">
+        <%= render "public/comments/form",project: @project,comment: @comment %>
+      </div>
+    </div>
+  </div>
+</div>
