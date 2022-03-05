@@ -1,2 +1,19 @@
-<h1>Public::Members#show</h1>
-<p>Find me in app/views/public/members/show.html.erb</p>
+<div class= "container">
+  <div class= "card shadow">
+    <div class= "card-body">
+      <div class= "row">
+        <div class="col-3">
+          <!--<#%= image_tag member,class:"mt-3 rounded-circle";%>-->
+        </div>
+        <div class= "col-9">
+          <p class= "card-text">
+            名前:  <%= @member.last_name %><%= @member.first_name %>
+          </p>
+          <p class= "card-text">
+            所属地域:  <%= @member.region %>
+          </p>
+          <p class= "card-text">
+            所属部署:  <%= @member.section %>
+          </p>
+        </div>
+      </div>
