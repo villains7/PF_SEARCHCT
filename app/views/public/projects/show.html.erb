@@ -1,33 +1,31 @@
 <div class= "container">
   <div class= "card shadow">
-    <h4>案件詳細</h4>
-    <div class= "row justify-content-center mb-3">
-      タイトル：<%= @project.title %>
+    <div class= "card body">
+      <h4 class= "card-title mt-3 ml-3">
+       <%= @project.title %>
+      </h4>
+      <div class= "card-text d-flex flex-row ml-3">
+        <p class= "mr-3">部署：<%= @project.region %></p>
+        <p>担当営業：<%= @project.salesman %></p>
+      </div>
+      <div class= "card-text ml-3 mb-3">
+        <%= @project.year %><%= @project.month %>
+      </div>
+      <div class= "card-text ml-3 mb-3">
+        概要：<%= @project.caption %>
+      </div>
+      <div class= "card-item ml-3 mb-3">
+        <%= image_tag @project.project_image,size: '300x400' %>
+      </div>
+      <div class= "card-item text-right mr-3 mb-3">
+        <%= render "public/thanks/btn",project: @project %>
+      </div>
+      <div class= "card-item ml-3 mb-3">
+        <%= render "public/comments/index",project: @project %>
+      </div>
+      <div class= "card-item ml-3 mb-3 mr-3">
+        <%= render "public/comments/form",project: @project,comment: @comment %>
+      </div>
     </div>
-    <div class= "row justify-content-center mb-3">
-      部署：<%= @project.region %>
-    </div>
-    <div class= "row justify-content-center mb-3">
-      担当営業：<%= @project.salesman %>
-    </div>
-    <div class= "row justify-content-center mb-3">
-      年月：<%= @project.year %><%= @project.month %>
-    </div>
-    <div class= "row justify-content-center mb-3">
-      概要：<%= @project.caption %>
-    </div>
-    <div class= "row justify-content-center mb-3">
-      画像：<%= image_tag @project.project_image,size: '500x700' %>
-    </div>
-    <div class= "row justify-content-center mb-3">
-      <%= render "public/comments/index",project: @project %>
-    </div>
-    <div class= "row justify-content-center mb-3">
-      <%= render "public/comments/form",project: @project,comment: @comment %>
-    </div>
-    <div class= "row justify-content-center mb-3">
-      <%= render "public/thanks/btn",project: @project %>
-    </div>
-
   </div>
 </div>
