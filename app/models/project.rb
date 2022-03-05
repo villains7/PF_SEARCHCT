@@ -10,7 +10,10 @@ class Project < ApplicationRecord
   end
 
   def self.search_for(content)  #案件のキーワード検索
-    Project.where('name LIKE ?','%' + content + '%')
+   if content
+     Project.where('title LIKE ?', '%' + content + '%')
+   else
+    Project.all
+   end
   end
-
 end
