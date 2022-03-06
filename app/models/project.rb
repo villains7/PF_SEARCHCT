@@ -9,11 +9,12 @@ class Project < ApplicationRecord
     thanks.exists?(member_id: member.id)
   end
 
-  def self.search_for(content)  #案件のキーワード検索
+  def self.search_for(content)  #プロジェクトの検索のメソッド
    if content
-     Project.where('title LIKE ?', '%' + content + '%')
+     Project.where('title LIKE ?', '%' + content + '%').or(Project.where('salesman LIKE ?','%' + content + '%'))
    else
-    Project.all
+     Project.all
    end
   end
+
 end

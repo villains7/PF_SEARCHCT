@@ -10,9 +10,6 @@
   <div class= "card shadow">
     <div class= "card-body">
       <h5 class= "card-text">検索結果</h5>
-      <% if @records.count == 0 %>
-      <p>該当案件はありません</p>
-      <% end %>
         <%= render 'index',project: @records %>
     </div>
   </div>

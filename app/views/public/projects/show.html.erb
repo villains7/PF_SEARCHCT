@@ -5,11 +5,11 @@
        <%= @project.title %>
       </h4>
       <div class= "card-text d-flex flex-row ml-3">
-        <p class= "mr-3">部署：<%= @project.region %></p>
+        <p class= "mr-3">地域：<%= @project.region %></p>
         <p>担当営業：<%= @project.salesman %></p>
       </div>
       <div class= "card-text ml-3 mb-3">
-        <%= @project.year %><%= @project.month %>
+        <%= @project.created_at.strftime('%Y年%m月')%>
       </div>
       <div class= "card-text ml-3 mb-3">
         概要：<%= @project.caption %>
@@ -17,7 +17,7 @@
       <div class= "card-item ml-3 mb-3">
         <%= image_tag @project.project_image,size: '300x400' %>
       </div>
-      <div class= "card-item text-right mr-3 mb-3">
+      <div class= "card-item ml-3 mb-3">
         <%= render "public/thanks/btn",project: @project %>
       </div>
       <div class= "card-item ml-3 mb-3">
