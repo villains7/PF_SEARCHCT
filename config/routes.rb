@@ -12,7 +12,11 @@ Rails.application.routes.draw do
    get "top" => "homes#top"
    get "members/my_page" => "members#show"
    get "search" => "searches#search"
-   resources :members, only:[:update]
+   resources :members, only:[:update,:show] do
+     collection do
+     get :thanks
+    end
+   end
     resource :members, only:[:edit]
    resources :projects do
      resource :thanks, only:[:create,:destroy]
