@@ -25,6 +25,9 @@
             <div class="col-auto mb-3">
             <%= f.select :region, Member::REGION, include_blank: "地域を選択"%>
             </div>
+            <div class="col-auto mb-3">
+            <%= f.select :session, Member::SESSION, include_blank: "部署を選択"%>
+            </div>
           </div>
           <div class="text-center actions mb-3">
             <%= f.submit "Sign up",class:"btn btn-success w-25" %>
