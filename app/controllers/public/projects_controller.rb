@@ -20,6 +20,10 @@ class Public::ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    #閲覧数ランキング表示のため以下を記載
+    unless ViewCount.find_by(member_id: current_member.id, project_id: @project.id)
+      current_member.view_counts.create(project_id: @project.id) #
+    end
     @comment = Comment.new
   end
 

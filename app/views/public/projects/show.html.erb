@@ -12,6 +12,9 @@
         <%= @project.created_at.strftime('%Y年%m月')%>
       </div>
       <div class= "card-text ml-3 mb-3">
+        閲覧数：<%= @project.view_counts.count %>
+      </div>
+      <div class= "card-text ml-3 mb-3">
         概要：<%= @project.caption %>
       </div>
       <div class= "card-item ml-3 mb-3">

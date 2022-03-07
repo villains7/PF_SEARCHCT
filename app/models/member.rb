@@ -7,6 +7,7 @@ class Member < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :thanks, dependent: :destroy
   has_many :thanks_project,through: :thanks,source: :project
+  has_many :view_counts, dependent: :destroy
   has_one_attached :profile_image
 
   REGION = [["本社","本社"],["近畿","近畿"],["中部","中部"],["東北","東北"],["中国四国","中国四国"],["九州","九州"],["北海道","北海道"]]
