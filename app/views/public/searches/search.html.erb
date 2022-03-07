@@ -2,12 +2,14 @@
   <div class= "card shadow">
     <div class= "card-body">
       <div class= "input-group">
-        <h3 class= "card-text">詳細検索フォーム</h3>
+        <h5 class= "card-text">詳細検索</h5>
+         <%= render 'form' %>
       </div>
     </div>
   </div>
   <div class= "card shadow">
     <div class= "card-body">
-      <h3 class= "card-text">検索結果出す</h3>
+      <h5 class= "card-text">検索結果</h5>
+        <%= render 'index',project: @records %>
     </div>
   </div>

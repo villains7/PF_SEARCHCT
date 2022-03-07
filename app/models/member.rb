@@ -6,5 +6,9 @@ class Member < ApplicationRecord
   has_many :projects, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :thanks, dependent: :destroy
+  has_many :thanks_project,through: :thanks,source: :project
   has_one_attached :profile_image
+
+  REGION = [["本社","本社"],["近畿","近畿"],["中部","中部"],["東北","東北"],["中国四国","中国四国"],["九州","九州"],["北海道","北海道"]]
+  SESSION = [["営業部","営業部"],["業務部","業務部"],["経理部","経理部"]]
 end

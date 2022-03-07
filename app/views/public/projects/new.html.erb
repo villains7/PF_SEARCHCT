@@ -8,10 +8,8 @@
           <%= f.text_field :title ,placeholder: "案件タイトル",class: "w-75"%>
         </div>
         <div class= "card-text d-flex justify-content-center mb-3">
-          <p class= "mr-3"><%= f.select :region,[["本社","本社"],["北海道","北海道"],["東北","東北"],["中部","中部"],["近畿","近畿"],["中国四国","中国四国"],["九州","九州"]], include_blank: "地域"%></p>
+          <p class= "mr-3"><%= f.select :region, Member::REGION,include_blank: "地域"%></p>
           <p class= "mr-3"><%= f.text_field :salesman,placeholder: "担当営業" %></p>
-          <p class= "mr-3"><%= f.select :year,[["2022年","2022年"]], include_blank: "案件発生年"%></p>
-          <p class= "mr-3"><%= f.select :month,[["1月","1月"]], include_blank: "案件発生月"%></p>
         </div>
         <div class= "row justify-content-center mb-3">
         <%= f.text_area :caption,rows: '15',placeholder: "案件詳細説明をここに",class: "w-75" %>

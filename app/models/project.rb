@@ -8,4 +8,13 @@ class Project < ApplicationRecord
   def thanked_by?(member)
     thanks.exists?(member_id: member.id)
   end
+
+  def self.search_for(content)  #プロジェクトの検索のメソッド
+   if content
+     Project.where('title LIKE ?', '%' + content + '%').or(Project.where('salesman LIKE ?','%' + content + '%'))
+   else
+     Project.all
+   end
+  end
+
 end

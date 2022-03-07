@@ -4,13 +4,19 @@ Rails.application.routes.draw do
     sessions: "public/sessions"
   }
 
+  #ログイン前トップページの表示
   root to: "homes#top"
 
 
   scope module: :public do
    get "top" => "homes#top"
+   get "members/my_page" => "members#show"
    get "search" => "searches#search"
-   resources :members
+   resources :members, only:[:update,:show] do
+     collection do
+     get :thanks
+    end
+   end
     resource :members, only:[:edit]
    resources :projects do
      resource :thanks, only:[:create,:destroy]
