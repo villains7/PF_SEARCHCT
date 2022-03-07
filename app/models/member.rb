@@ -11,4 +11,8 @@ class Member < ApplicationRecord
 
   REGION = [["本社","本社"],["近畿","近畿"],["中部","中部"],["東北","東北"],["中国四国","中国四国"],["九州","九州"],["北海道","北海道"]]
   SESSION = [["営業部","営業部"],["業務部","業務部"],["経理部","経理部"]]
+
+  def get_profile_image(weight,height)
+    (profile_image.attached) ? profile_image : 'noimage.jpg'
+  end
 end
