@@ -2,7 +2,7 @@
   <%= f.text_field :keyword ,placeholder: "キーワードを入力"%>
   <%= f.text_field :keyword ,placeholder: "担当営業名を入力"%>
   <%= f.select :region, Member::REGION, include_blank: "地域を選択"%>
-  <%= f.date_select :date,start_year: 2013,use_month_numbers: true,discard_day: true%>
+  <%= f.date_select :date,start_year: 2013,use_month_numbers: true,discard_day: true,include_blank: true%>
   <%= f.submit '検索',class: "btn btn-info" %>
 <% end %>
 <!--sprintf ,date_separetor :'%s'),'年','月')-->
