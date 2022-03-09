@@ -15,11 +15,17 @@ class Public::ProjectsController < ApplicationController
   end
 
   def index
-    @projects = Project.all
+    #トップページに案件閲覧数ランキングを表示
+    #joinsでプロジェクトとビューカウントテーブルを内部結合
+    #@projects = Project.joins(:view_counts).group(:project_id).order('count(:member_id) desc').limit(3)
   end
 
   def show
     @project = Project.find(params[:id])
+    #閲覧数表示のため以下を記載
+    unless ViewCount.find_by(member_id: current_member.id, project_id: @project.id)
+      current_member.view_counts.create(project_id: @project.id) #
+    end
     @comment = Comment.new
   end
 

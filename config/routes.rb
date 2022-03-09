@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
-   get "top" => "homes#top"
+   get "top" => "projects#index"
    get "members/my_page" => "members#show"
    get "search" => "searches#search"
    resources :members, only:[:update,:show] do
