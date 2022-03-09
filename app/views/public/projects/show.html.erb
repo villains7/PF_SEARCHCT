@@ -15,7 +15,7 @@
         閲覧数：<%= @project.view_counts.count %>
       </div>
       <div class= "card-text ml-3 mb-3">
-        <!--splitメソッドで文字列を分割改行コードをhtmlで表示した時に<br>にする-->
+        <!--splitメソッドで文字列を分割。改行コードをhtmlで表示した時に<br>にする-->
         概要<br><%= safe_join(@project.caption.split("\n"),tag(:br)) %>
       </div>
       <div class= "card-item ml-3 mb-3">

@@ -9,8 +9,9 @@
     </tr>
   </thead>
   <tbody>
-    <% project.each do |project| %>
+    
     <tr>
+       <% project.each do |project| %>
       <th><%= project.view_counts.count %></th>
       <th><%= project.title %></th>
       <th><%= project.region %></th>

@@ -16,15 +16,17 @@ class Public::ProjectsController < ApplicationController
 
   def index
     #トップページに案件閲覧数ランキングを表示
-    #joinsでプロジェクトとビューカウントテーブルを内部結合
-    #@projects = Project.joins(:view_counts).group(:project_id).order('count(:member_id) desc').limit(3)
+    #joinsでプロジェクトとビューカウントテーブルを内部結合。
+    #groupメソッドでレコードをまとめる。その後member_idがいくつあるか数えてランキング。
+    #sqlインジェクションの危険あり。下記の記載は不可
+    @projects = Project.joins(:view_counts).group(:project_id).order('count(:member_id) desc').limit(3)
   end
 
   def show
     @project = Project.find(params[:id])
     #閲覧数表示のため以下を記載
     unless ViewCount.find_by(member_id: current_member.id, project_id: @project.id)
-      current_member.view_counts.create(project_id: @project.id) #
+      current_member.view_counts.create(project_id: @project.id) 
     end
     @comment = Comment.new
   end
