@@ -8,7 +8,7 @@ class Public::ProjectsController < ApplicationController
     @project = Project.new(project_params)
     @project.member_id = current_member.id
     if @project.save
-     redirect_to '/'#リダイレクト先検討
+     redirect_to project_path(@project)
     else
       render :new
     end
