@@ -10,8 +10,12 @@
   <div class= "card shadow">
     <div class= "card-body">
       <h5 class= "card-text">検索結果</h5>
-      <%= flash[:result] %>
+      <% if @records.present?%>
+        <%= flash[:result] %>
         <%= render 'index',project: @records %>
+      <% else %>
+        <p>検索結果はありません</p>
+      <% end %>
     </div>
   </div>
 </div>

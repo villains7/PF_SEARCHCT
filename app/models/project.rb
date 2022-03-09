@@ -9,9 +9,17 @@ class Project < ApplicationRecord
   def thanked_by?(member)
     thanks.exists?(member_id: member.id)
   end
-
-  def self.search_for(content)  #キーワード検索のメソッド
-     Project.where('title LIKE ?', '%' + content + '%').or(Project.where('salesman LIKE ?','%' + content + '%'))
+  #プロジェクトの検索のメソッド
+  def self.search_for(keyword,content)
+    if keyword.present? && content.present?
+      Project.where('title LIKE ?', '%' + keyword + '%').where('salesman LIKE ?','%' + content + '%')
+    elsif keyword.present? && content == ""
+      Project.where('title LIKE ?', '%' + keyword + '%')
+    elsif keyword == "" && content.present?
+      Project.where('salesman LIKE ?','%' + content + '%')
+    else
+   #どっちもない場合どうする？
+    end
   end
 
 end
