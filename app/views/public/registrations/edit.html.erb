@@ -2,7 +2,7 @@
   <div class= "card shadow">
     <div class= "card-body">
       <h2>情報編集</h2>
-       <%= form_with model: @member, url: registration_path(resource_name), local: true do |f| %>
+       <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
        <%= render "public/shared/error_messages", resource: resource %>
         <div class= "row">
           <div class="col-3">
@@ -22,7 +22,7 @@
               </p>
             <label>所属</label>
               <p class= "card-text">
-                <%= f.select :region,  Member::REGION, autofocus: true %><%= f.select :session, Member::SESSION, autofocus: true %>
+                <%= f.select :region,  Member::REGION, autofocus: true %><%= f.select :secion, Member::SECION, autofocus: true %>
               </p>
             <label>入社年月日</label>
               <p class= "card-text">

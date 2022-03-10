@@ -7,23 +7,27 @@ class  Public::SearchesController < ApplicationController
     #選択された地域
     @region = params[:region]
     # date_selectで選択された値をparamsからTimeオブジェクトにする。
-    # year = params['date(1i)']
-    # month = params['date(2i)']
-    # day = params['date(3i)']
-    # date = Time.gm(year, month, day)
+    #1.2がそろったら3を使うif文（空かどうか確認する。）
+    year = params['date(1i)']
+    month = params['date(2i)']
+    day = params['date(3i)']
 
-    records = Project.search_for(keyword,salesman)
-    if @region.present?
-      @records = Project.where(region: @region)
+    if year.present? && month.present? && @region.present?
+      date = Time.gm(year, month ,day)
+      #日付で検索
+      flash[:result] = "検索結果は以下のとおりです"
+      @records = Project.search_for(keyword,salesman).where(created_at: [date.at_beginning_of_month..date.end_of_month]).where(region: @region)
+    elsif year.present? && month.present?
+      date = Time.gm(year, month ,day)
+      flash[:result] = "検索結果は以下のとおりです"
+      @records = Project.search_for(keyword,salesman).where(created_at: [date.at_beginning_of_month..date.end_of_month])
+    elsif @region.present?
+      flash[:result] = "検索結果は以下のとおりです"
+      @records =  Project.search_for(keyword,salesman).where(region: @region)
     else
-      @records = records
+      #flash[:result] = "検索結果は以下のとおりです"
+      @records = Project.search_for(keyword,salesman)
     end
-
-    #日付で検索
-    #Project.where(created_at: [date.beginning_of_month..date.end_of_month])
-
-
-    #Project.where(region: @region,created_at: [@date..Time.now])
 
 
     # if @region.present?

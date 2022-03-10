@@ -15,10 +15,17 @@
         閲覧数：<%= @project.view_counts.count %>
       </div>
       <div class= "card-text ml-3 mb-3">
-        概要：<%= @project.caption %>
+        <!--splitメソッドで文字列を分割。改行コードをhtmlで表示した時に<br>にする-->
+        概要<br><%= safe_join(@project.caption.split("\n"),tag(:br)) %>
       </div>
       <div class= "card-item ml-3 mb-3">
-        <%= image_tag @project.project_image,size: '300x400' %>
+        <% if @project.project_images.attached? %>
+          <% @project.project_image.each do |project_image| %>
+          <%= image_tag project_image,size: '300x400' %>
+          <% end %>
+        <% else %>
+          <p>画像はありません</p>
+        <% end %>
       </div>
       <div class= "card-item ml-3 mb-3">
         <%= render "public/thanks/btn",project: @project %>

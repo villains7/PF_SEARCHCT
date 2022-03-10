@@ -3,7 +3,7 @@ class Project < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :thanks, dependent: :destroy
   has_many :view_counts, dependent: :destroy
-  has_one_attached :project_image
+  has_many_attached :project_images
   #タグ実装したら追加記載
 
   def thanked_by?(member)
@@ -18,7 +18,7 @@ class Project < ApplicationRecord
     elsif keyword == "" && content.present?
       Project.where('salesman LIKE ?','%' + content + '%')
     else
-   #どっちもない場合どうする？
+      Project.all
     end
   end
 

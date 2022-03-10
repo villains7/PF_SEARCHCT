@@ -37,6 +37,33 @@
                 <p style="border-bottom: solid 1px">略歴: <%= @member.carrer %></p>
               <% end %>
             </p>
+            <!--<p class= "card-text">-->
+              <p>投稿した案件</p>
+              <table class ="table">
+                <thead>
+                  <tr>
+                    <th>案件名</th>
+                    <th>地域</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if @projects.present? %>
+                    <% @projects.each do |project| %>
+                  <tr>
+                    <td><%= project.title %></td>
+                    <td><%= project.region %></td>
+                    
+                    <td><%= link_to "編集",edit_project_path(project), class: "btn btn-sm btn-success edit_project_#{project.id}" %> </td>
+                    <% end %>
+                  </tr>
+
+                  <% else %>
+                    <p>投稿した案件はありません</p>
+                  <% end %>
+                </tbody>
+              </table>
+            <!--</p>-->
             <p class= "card-text">
               <%= link_to '編集する',edit_members_path,class: "btn btn-success w-25"%>
             </p>

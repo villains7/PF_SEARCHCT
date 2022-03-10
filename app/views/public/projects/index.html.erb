@@ -1,8 +1,11 @@
 <div class= "container">
-  <div class= "card shadow">
-    <div class= "card-body">
-      <h1>案件閲覧数ランキング</h1>
-        <!--<#%= render 'index', project: @projects %>-->
+  <div class= "row">
+    <div class= "col-12 col-lg-8">
+          <h4>案件閲覧数ランキング</h4>
+            <%= render 'index',project: @projects%>
+    </div>
+    <div class= "col-12 col-lg-4">
+      <%= render 'public/events/index' %>
     </div>
   </div>
 </div>

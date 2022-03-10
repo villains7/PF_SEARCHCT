@@ -13,6 +13,36 @@ import "bootstrap";
 import "../stylesheets/application"
 import '@fortawesome/fontawesome-free/js/all'
 
+import { Calendar } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
+import bootstrapPlugin from '@fullcalendar/bootstrap';
+
+document.addEventListener('turbolinks:load', function() {
+  var calendarEl = document.getElementById('calendar');
+  var calendar = new Calendar(calendarEl, {
+    locale: 'ja',
+    height: 'auto',
+    fixedWeekCount: false,
+    buttonText: {
+      today: '今日'
+    },
+    events :[
+      {
+        start:'2022-03-18',
+        end:'2022-03-18',
+        title: '口座振替締日',
+        display: 'background'
+      }
+    ],
+    dayCellContent: function(e) {
+    e.dayNumberText = e.dayNumberText.replace('日', '');
+    },
+    plugins: [ dayGridPlugin, interactionPlugin ,bootstrapPlugin]
+  });
+  calendar.render();
+});
+
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
