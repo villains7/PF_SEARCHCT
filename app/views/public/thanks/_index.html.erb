@@ -1,0 +1,17 @@
+<p>Thanks!した記事一覧</p>
+  <table class ="table">
+    <thead>
+      <tr>
+          <th>案件名</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if thanks_project.present? %>
+        <% thanks_project.each do |project| %>
+        <tr>
+          <td><%= project.title %></td>
+        </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>

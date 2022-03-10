@@ -12,11 +12,11 @@
     <tbody>
          <% project.each do |project| %>
       <tr>
-        <th><%= project.view_counts.count %></th>
-        <th scope= "col" class="text-nowrap"><%= project.title %></th>
-        <th scope= "col" class="text-nowrap"><%= project.region %></th>
-        <th scope= "col" class="text-nowrap"><%= project.salesman %></th>
-        <th scope= "col" class="text-nowrap"><%= link_to "詳細",project_path(project),class: "btn btn-primary" %></th>
+        <td><%= project.view_counts.count %></td>
+        <td scope= "col" class="text-nowrap"><%= project.title %></td>
+        <td scope= "col" class="text-nowrap"><%= project.region %></td>
+        <td scope= "col" class="text-nowrap"><%= project.salesman %></td>
+        <td scope= "col" class="text-nowrap"><%= link_to "詳細",project_path(project),class: "btn btn-primary" %></td>
       <% end %>
       </tr>
     </tbody>
