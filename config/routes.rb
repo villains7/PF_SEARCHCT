@@ -14,7 +14,7 @@ Rails.application.routes.draw do
    get "search" => "searches#search"
    get 'events/index'
    resources :members, only:[:update,:show] do
-     collection do
+     member do
      get :thanks
     end
    end

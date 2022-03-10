@@ -23,13 +23,6 @@
                 <p class="text" style="border-bottom: solid 1px">入社年月:  <%= @member.year %>年<%= @member.month %>月</p>
               <% end %>
             </p>
-            <!--<p class= "card-text">-->
-            <!--  <#% if @thanks_project.present? %>-->
-            <!--   <#% @thanks_project.each do |project| %>-->
-            <!--   <#%= project.title %>-->
-            <!--   <#% end %>-->
-            <!--  <#% end %>-->
-            <!--</p>-->
             <p class= "card-text">
               <% if @member.carrer == "" %>
                 <p style="border-bottom: solid 1px">編集ページで経歴を入力してください</p>
@@ -53,7 +46,6 @@
                   <tr>
                     <td><%= project.title %></td>
                     <td><%= project.region %></td>
-                    
                     <td><%= link_to "編集",edit_project_path(project), class: "btn btn-sm btn-success edit_project_#{project.id}" %> </td>
                     <% end %>
                   </tr>
@@ -63,9 +55,9 @@
                   <% end %>
                 </tbody>
               </table>
-            <!--</p>-->
+              <%= render 'public/thanks/index',thanks_project: @thanks_project %>
             <p class= "card-text">
-              <%= link_to '編集する',edit_members_path,class: "btn btn-success w-25"%>
+              <%= link_to 'ユーザー情報を編集する',edit_members_path,class: "btn btn-success w-50"%>
             </p>
           </div>
         </div>
