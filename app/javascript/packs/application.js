@@ -27,6 +27,14 @@ document.addEventListener('turbolinks:load', function() {
     buttonText: {
       today: '今日'
     },
+    events :[
+      {
+        start:'2022-03-18',
+        end:'2022-03-18',
+        title: '口座振替締日',
+        display: 'background'
+      }
+    ],
     dayCellContent: function(e) {
     e.dayNumberText = e.dayNumberText.replace('日', '');
     },

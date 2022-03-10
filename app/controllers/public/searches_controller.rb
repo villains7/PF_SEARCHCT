@@ -25,7 +25,7 @@ class  Public::SearchesController < ApplicationController
       flash[:result] = "検索結果は以下のとおりです"
       @records =  Project.search_for(keyword,salesman).where(region: @region)
     else
-      flash[:result] = "検索結果は以下のとおりです"
+      #flash[:result] = "検索結果は以下のとおりです"
       @records = Project.search_for(keyword,salesman)
     end
 
