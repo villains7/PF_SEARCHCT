@@ -18,7 +18,7 @@ class Project < ApplicationRecord
     elsif keyword == "" && content.present?
       Project.where('salesman LIKE ?','%' + content + '%')
     else
-   #どっちもない場合どうする？
+      Project.all
     end
   end
 

@@ -20,11 +20,18 @@ import bootstrapPlugin from '@fullcalendar/bootstrap';
 
 document.addEventListener('turbolinks:load', function() {
   var calendarEl = document.getElementById('calendar');
-
   var calendar = new Calendar(calendarEl, {
+    locale: 'ja',
+    height: 'auto',
+    fixedWeekCount: false,
+    buttonText: {
+      today: '今日'
+    },
+    dayCellContent: function(e) {
+    e.dayNumberText = e.dayNumberText.replace('日', '');
+    },
     plugins: [ dayGridPlugin, interactionPlugin ,bootstrapPlugin]
   });
-
   calendar.render();
 });
 
