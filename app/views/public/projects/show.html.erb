@@ -15,6 +15,8 @@
            <p class ="btn btn-dark"><%= tag.name %></p>
           <% end %>
         <% end %>
+        投稿者：<%= @project.member.last_name %><%= @project.member.first_name %>
+        <%= link_to "りんく",member_path(@member) %>
       </div>
       <div class= "card-text ml-3 mb-3">
         閲覧数：<%= @project.view_counts.count %>

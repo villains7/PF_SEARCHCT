@@ -1,13 +1,9 @@
 class Public::MembersController < ApplicationController
 
   def show
-    @member = current_member
+    @member = Member.find(params[:id])
     @projects = @member.projects
-  end
-
-  def thanks
-    thanks = Thank.where(member_id: current_member.id).pluck(:project_id)
-    @thanks_project = Project.find(thanks)
+    @thanks_projects = @member.thanks_projects
   end
 
   def edit

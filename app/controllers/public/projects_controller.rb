@@ -28,6 +28,7 @@ class Public::ProjectsController < ApplicationController
     unless ViewCount.find_by(member_id: current_member.id, project_id: @project.id)
       current_member.view_counts.create(project_id: @project.id)
     end
+    @member = @project.member_id
     @comment = Comment.new
   end
 
