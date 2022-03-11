@@ -10,6 +10,11 @@
       </div>
       <div class= "card-text ml-3 mb-3">
         <%= @project.created_at.strftime('%Y年%m月')%>
+        <% if @project.tags.present? %>
+          <% @project.tags.each do |tag| %>
+           <p class ="btn btn-dark"><%= tag.name %></p>
+          <% end %>
+        <% end %>
       </div>
       <div class= "card-text ml-3 mb-3">
         閲覧数：<%= @project.view_counts.count %>

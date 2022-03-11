@@ -9,17 +9,30 @@
           <%= f.text_field :title ,placeholder: "案件タイトル",class: "w-75"%>
         </div>
         <div class= "card-text d-flex justify-content-center mb-3">
-          <p class= "mr-3"><%= f.select :region, Member::REGION,include_blank: "地域"%></p>
-          <p class= "mr-3"><%= f.text_field :salesman,placeholder: "担当営業" %></p>
+          <p class= "mr-3">
+            <%= f.select :region, Member::REGION,include_blank: "地域"%>
+          </p>
+          <p class= "mr-3">
+            <%= f.text_field :salesman,placeholder: "担当営業" %>
+          </p>
         </div>
         <div class= "row justify-content-center mb-3">
-        <%= f.text_area :caption,rows: '15',placeholder: "案件詳細説明をここに",class: "w-75" %>
+          <!--引数の順番によって役割が変わる。-->
+          <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+              <%= tag.label do %>
+                <%= tag.check_box %>
+                <%= tag.text%>
+              <% end %>
+            <% end %>
         </div>
         <div class= "row justify-content-center mb-3">
-        <%= f.file_field :project_image,accept: "image/*", multiple: true  %>
+          <%= f.text_area :caption,rows: '15',placeholder: "案件詳細説明をここに",class: "w-75" %>
         </div>
         <div class= "row justify-content-center mb-3">
-        <%= f.submit "案件登録",class: "btn btn-success w-75"%>
+          <%= f.file_field :project_image,accept: "image/*", multiple: true  %>
+        </div>
+        <div class= "row justify-content-center mb-3">
+          <%= f.submit "案件登録",class: "btn btn-success w-75"%>
         </div>
         <% end %>
     </div>
