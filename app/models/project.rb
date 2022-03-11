@@ -3,7 +3,7 @@ class Project < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :thanks, dependent: :destroy
   has_many :view_counts, dependent: :destroy
-  has_many_attached :project_images
+  has_one_attached :project_image
   #タグ実装したら追加記載
 
   def thanked_by?(member)

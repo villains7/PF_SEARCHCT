@@ -19,13 +19,14 @@
         概要<br><%= safe_join(@project.caption.split("\n"),tag(:br)) %>
       </div>
       <div class= "card-item ml-3 mb-3">
-        <% if @project.project_images.attached? %>
-          <% @project.project_image.each do |project_image| %>
-          <%= image_tag project_image,size: '300x400' %>
-          <% end %>
-        <% else %>
-          <p>画像はありません</p>
-        <% end %>
+         <%= image_tag @project.project_image,size: '300x400' %>
+        <!--<3% if @project.project_images.attached? %>-->
+        <!--  <3% @project.project_image.each do |project_image| %>-->
+        <!--  <3%= image_tag project_image,size: '300x400' %>-->
+        <!--  <3% end %>-->
+        <!--<3% else %>-->
+        <!--  <p>画像はありません</p>-->
+        <!--<3% end %>-->
       </div>
       <div class= "card-item ml-3 mb-3">
         <%= render "public/thanks/btn",project: @project %>
