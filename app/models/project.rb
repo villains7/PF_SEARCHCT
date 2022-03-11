@@ -6,6 +6,11 @@ class Project < ApplicationRecord
   has_one_attached :project_image
   #タグ実装したら追加記載
 
+  validates :title, presence: true
+  validates :caption, presence:true
+  validates :region, presence:true
+  validates :salesman, presence:true
+
   def thanked_by?(member)
     thanks.exists?(member_id: member.id)
   end

@@ -2,6 +2,7 @@
   <div class= "card shadow">
     <div class= "card-body">
       <h4 class= "mt-3 ml-3">案件登録</h4>
+        <%= render 'error',project: @project %>
         <%= form_with model: @project, url: projects_path,method: :post do |f| %>
         <!--ラベルと遷移先要検討--><!--セレクトボックスの位置修正する-->
         <div class= "card-text text-center mb-3">

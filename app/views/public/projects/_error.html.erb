@@ -1,0 +1,8 @@
+<% if project.errors.any? %>
+  <%= project.errors.count %>件のエラーが発生したため案件登録ができませんでした。
+  <ul>
+    <% project.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+<% end %>
