@@ -6,13 +6,27 @@ class  Public::SearchesController < ApplicationController
     salesman = params[:salesman]
     #選択された地域
     @region = params[:region]
-    # date_selectで選択された値をparamsからTimeオブジェクトにする。
-    #1.2がそろったら3を使うif文（空かどうか確認する。）
+
     year = params['date(1i)']
     month = params['date(2i)']
     day = params['date(3i)']
 
+    #年、月どちらか一方では検索できないようにする。
+    if year.present? && month == ""
+      flash[:alert] = "月を入力してください"
+      return
+    end
+    if year == "" && month .present?
+      flash[:alert] = "年を入力してください"
+      return
+    end
+
+    tag = params[:tag_ids]
+
+
+
     if year.present? && month.present? && @region.present?
+      # date_selectで選択された値をparamsからTimeオブジェクトにする
       date = Time.gm(year, month ,day)
       #日付で検索
       flash[:result] = "検索結果は以下のとおりです"
@@ -28,30 +42,17 @@ class  Public::SearchesController < ApplicationController
       #flash[:result] = "検索結果は以下のとおりです"
       @records = Project.search_for(keyword,salesman)
     end
-
+  end
 
     # if @region.present?
     #   @records = Project.where(~~~~~~~)
     #   return @records
     # end
 
-    # if @region == "" && @date == ""
-    #   flash[:result] = "検索結果は以下のとおりです"
-    #   @records
-    # elsif @region == "" && @date.present?
-    #   flash[:result] = "検索結果は以下のとおりです"
-    #   @records = Project.where(created_at: @date.all_month)
-    # elsif @region.present? && @date == ""
-    #   flash[:result] = "検索結果は以下のとおりです"
-    #   @records = Project.where(region: @region)
-    # else
-    #   flash[:result] = "検索結果は以下のとおりです"
-    #   @records = Project.where(region: @region,created_at: @date.in_time_zone.all_month)
+  private
+
+    # def project_params
+    #   params.require(:project).permit(:title,:salesman,:region,:created_at,:tag_ids)
     # end
-    #Project.where(create_at:選択した月 1..31)
-
-    # where 範囲を指定する方法
-    # 1つ点からその月の範囲に変換する方法
-
-  end
 end
+
