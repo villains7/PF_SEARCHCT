@@ -13,7 +13,7 @@ class Member < ApplicationRecord
   validates :last_name,presence: true
   validates :first_name,presence: true
 
-
+# 　hash = ({id:1, region:"本社"},{id:2,region:"近畿"},{id:3,region:"中部"},{id:4,region:"東北"},{id:5,region:"中国四国"},{id:6,region:"九週"},{id:7,region:"北海道"})
 
   REGION = [["本社","1"],["近畿","2"],["中部","3"],["東北","4"],["中国四国","5"],["九州","6"],["北海道","7"]]
   SECTION = [["営業部","営業部"],["業務部","業務部"],["経理部","経理部"]]

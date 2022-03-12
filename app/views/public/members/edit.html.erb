@@ -1,2 +1,40 @@
-<h1>Public::Members#edit</h1>
-<p>Find me in app/views/public/members/edit.html.erb</p>
+<div class= "container">
+  <div class= "card shadow">
+    <div class= "card-body">
+      <h2>情報編集</h2>
+        <div class= "row">
+          <div class="col-3">
+             <%= form_with model: @member do |f| %>
+              <%= image_tag @member.get_profile_image(30,30),class:"img-fluid rounded-circle";%>
+              <%= f.file_field :profile_image,accept: "image/*" %>
+          </div>
+          <div class= "col-9">
+            <label>名前</label>
+              <p class= "card-text">
+                <%= f.text_field :last_name, autofocus: true %><%= f.text_field :first_name,autofocus: true %>
+              </p>
+            <label>メールアドレス</label>
+              <p class= "card-text">
+                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+              </p>
+            <label>所属</label>
+              <p class= "card-text">
+                <%= f.select :region,  Member::REGION, autofocus: true %><%= f.select :section, Member::SECTION, autofocus: true %>
+              </p>
+            <label>入社年月日</label>
+              <p class= "card-text">
+                <%= f.select :year, *[2013..2022],autofocus: true %>年<%= f.select :month, *[1..12],autofocus: true %>月
+              </p>
+            <label>略歴</label>
+              <p class= "card-text">
+                <%= f.text_area :carrer,rows: '5', autofocus: true, placeholder: "今まで担当した部署を記載してください ex) 2019年〜2021年 本社業務部",class: "w-75" %>
+              </p>
+              <div class="actions">
+                <%= f.submit "更新",url: member_path(@member),class: "btn btn-info w-25" %>
+              </div>
+              <% end %>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
