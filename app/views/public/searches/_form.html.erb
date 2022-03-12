@@ -1,6 +1,6 @@
 <%= form_with url: search_path, method: :get, local: true do |f| %>
-  <%= f.text_field :keyword ,value: @keyword,placeholder: "キーワードを入力"%>
-  <%= f.text_field :salesman ,value: @salesman,placeholder: "担当営業名を入力"%>
+  <%= f.text_field :keyword ,placeholder: "キーワードを入力"%>
+  <%= f.text_field :salesman ,placeholder: "担当営業名を入力"%>
   <%= f.select :region, Member::REGION, include_blank: "地域を選択"%>
   <%= f.date_select :date,start_year: 2013,use_month_numbers: true,discard_day: true,include_blank: true%>
   <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
