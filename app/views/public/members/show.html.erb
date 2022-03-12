@@ -44,21 +44,24 @@
                   <% if @projects.present? %>
                     <% @projects.each do |project| %>
                   <tr>
-                    <td><%= project.title %></td>
+                    <td><%= link_to project.title,project, class: "project_#{project.id}" %></td>
                     <td><%= project.region %></td>
+                      <% if @member == current_member %>
                     <td><%= link_to "編集",edit_project_path(project), class: "btn btn-sm btn-success edit_project_#{project.id}" %> </td>
+                      <% end %>
                     <% end %>
                   </tr>
-
                   <% else %>
                     <p>投稿した案件はありません</p>
                   <% end %>
                 </tbody>
               </table>
-              <%= render 'public/thanks/index',thanks_project: @thanks_project %>
-            <p class= "card-text">
-              <%= link_to 'ユーザー情報を編集する',edit_members_path,class: "btn btn-success w-50"%>
-            </p>
+              <% if @member == current_member %>
+                <%= render 'public/thanks/index',thanks_project: @thanks_projects %>
+              <p class= "card-text">
+                <%= link_to 'ユーザー情報を編集する',edit_member_path(@member),class: "btn btn-success w-50"%>
+              <% end %>
+              </p>
           </div>
         </div>
     </div>

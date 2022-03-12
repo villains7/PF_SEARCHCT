@@ -10,15 +10,10 @@ Rails.application.routes.draw do
 
   scope module: :public do
    get "top" => "projects#index"
-   get "members/my_page" => "members#show"
+   #get "members/my_page" => "members#show"
    get "search" => "searches#search"
    get 'events/index'
-   resources :members, only:[:update,:show] do
-     member do
-     get :thanks
-    end
-   end
-    resource :members, only:[:edit]
+   resources :members, only:[:update,:show,:edit]
    resources :projects do
      resource :thanks, only:[:create,:destroy]
      resource :comments, only:[:create,:destroy]

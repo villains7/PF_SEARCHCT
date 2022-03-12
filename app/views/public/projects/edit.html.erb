@@ -1,0 +1,30 @@
+<div class= "container">
+  <div class= "card shadow">
+    <div class= "card body">
+      <h5 class= "card-title mt-3 ml-3">
+        <%= form_with model: @project do |f| %>
+          案件タイトル<br><%= f.text_field :title,autofocus: true%>
+      </h5>
+      <div class= "card-text d-flex flex-row ml-3">
+        <p class= "mr-3">地域：<%= f.select :region,Member::REGION,autofocus: true %></p>
+        <p>担当営業：<%= f.text_field :salesman,autofocus: true%></p>
+      </div>
+      <div class= "card-text ml-3 mb-3">
+        概要<br><%= f.text_area :caption,rows: '15',class: "w-50"%>
+      </div>
+      <div class= "card-item ml-3 mb-3">
+        <!--<3% if @project.project_images.attached? %>-->
+        <!--  <3% @project.project_image.each do |project_image| %>-->
+          <%= image_tag @project.project_image,size: '300x400' %>
+        <!--  <3% end %>-->
+        <!--<3% else %>-->
+        <!--  <p>画像はありません</p>-->
+        <!--<3% end %>-->
+      </div>
+      <div class= "card-item ml-3 mb-3">
+        <%= f.submit "変更を保存",class: "btn btn-success w-50" %>
+      </div>
+        <% end %>
+    </div>
+  </div>
+</div>
