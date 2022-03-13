@@ -26,37 +26,38 @@ class  Public::SearchesController < ApplicationController
       flash[:alert] = "年を入力してください"
       return
     end
-
+    #チェックされたタグ
     tag_ids = params[:tag_ids]
     tags = Tag.where(id: tag_ids)
 
-
-    if year.present? && month.present? && @region.present?
+    if year.present? && month.present? && @region.present? && tag_ids.present?
       # date_selectで選択された値をparamsからTimeオブジェクトにする
       @date = Time.gm(year, month ,day)
-      #日付,地域、キーワード、営業名でアンド検索
+      #日付,地域、キーワード、営業名、タグでアンド検索
+      flash[:result] = "検索結果は以下のとおりです"
+      @records = Project.search_for(@keyword,@salesman).where(created_at: [@date.at_beginning_of_month..@date.end_of_month]).where(region: @region).joins(:tag_maps).where(tag_maps:{tag_id: tags})
+    elsif year.present? && month.present? && @region.present?
+      @date = Time.gm(year, month ,day)
+      #日付、地域、キーワード、営業名でアンド検索
       flash[:result] = "検索結果は以下のとおりです"
       @records = Project.search_for(@keyword,@salesman).where(created_at: [@date.at_beginning_of_month..@date.end_of_month]).where(region: @region)
-    elsif year.present? && month.present?
-      @date = Time.gm(year, month ,day)
-      #日付、キーワード、営業名でアンド検索
+    elsif  year.present? && month.present? && tag_ids.present?
+       @date = Time.gm(year, month ,day)
+      #日付、タグ、キーワード、営業名でアンド検索
       flash[:result] = "検索結果は以下のとおりです"
-      @records = Project.search_for(@keyword,@salesman).where(created_at: [@date.at_beginning_of_month..@date.end_of_month])
+      @records = Project.search_for(@keyword,@salesman).where(created_at: [@date.at_beginning_of_month..@date.end_of_month]).joins(:tag_maps).where(tag_maps:{tag_id: tags})
     elsif @region.present?
       #地域、キーワード、営業名でアンド検索
       flash[:result] = "検索結果は以下のとおりです"
       @records =  Project.search_for(@keyword,@salesman).where(region: @region)
+    elsif tag_ids.present?
+      #タグのみで検索
+      flash[:result] = "検索結果は以下のとおりです"
+      @records = Project.joins(:tag_maps).where(tag_maps:{tag_id: tags})
     else
       #キーワード、営業名でアンド検索。分岐はモデルに記載あり。
       @records = Project.search_for(@keyword,@salesman)
     end
   end
-
-    # if @region.present?
-    #   @records = Project.where(~~~~~~~)
-    #   return @records
-    # end
-
-
 end
 

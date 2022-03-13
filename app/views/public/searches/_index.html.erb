@@ -10,10 +10,9 @@
   <tbody>
     <% project.each do |project| %>
     <tr>
-      <td><%= project.title %></td>
+      <td><%= link_to project.title,project_path(project) %></td>
       <td><%= project.region %></td>
       <td><%= project.salesman %></td>
-      <td><%= link_to "詳細",project_path(project),class: "btn btn-primary" %></td>
     <% end %>
     </tr>
   </tbody>
