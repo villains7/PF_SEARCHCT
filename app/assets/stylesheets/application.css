@@ -13,6 +13,25 @@
  *= require_tree .
  *= require_self
  */
- body {
-   background-image:image-url("hoge.jpg");
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Zen Maru Gothic', sans-serif;
+}
+
+.fc table{
+  background-color: #fff;
+ }
+.fc-button {
+  background-color: #c7b2d6;
+}
+.fc-day-sat {
+  background-color: #eaf4ff;
+ }
+
+ .fc-day-sun {
+  background-color: #ffeaea;
  }

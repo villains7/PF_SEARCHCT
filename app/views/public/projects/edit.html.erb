@@ -13,13 +13,16 @@
         概要<br><%= f.text_area :caption,rows: '15',class: "w-50"%>
       </div>
       <div class= "card-item ml-3 mb-3">
-        <!--<3% if @project.project_images.attached? %>-->
-        <!--  <3% @project.project_image.each do |project_image| %>-->
+        <% if @project.project_images.attached? %>
+          <% @project.project_images.each do |image| %>
+           <%= image_tag image,size: '300x400'%>
+          <% end %>
+        <% else %>
           <%= image_tag @project.project_image,size: '300x400' %>
-        <!--  <3% end %>-->
-        <!--<3% else %>-->
-        <!--  <p>画像はありません</p>-->
-        <!--<3% end %>-->
+        <% end %>
+      </div>
+      <div class= "card-item ml-3 mb-3">
+        <%= f.file_field :project_images,accept: "image/*", multiple: true %>
       </div>
       <div class= "card-item ml-3 mb-3">
         <%= f.submit "変更を保存",class: "btn btn-success w-50" %>

@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   scope module: :public do
    get "top" => "projects#index"
-   get "search" => "searches#search"
+   get "search" => "searches#index"
+   get "result" => "searches#search"
    get 'events/index'
    resources :members, only:[:update,:show,:edit]
    resources :projects do
