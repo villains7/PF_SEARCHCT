@@ -1,11 +1,11 @@
 <% if project.thanked_by?(current_member) %>
-  <%= link_to project_thanks_path(project), method: :delete do %>
-  Thanks!<i class="fa-solid fa-heart" aria-hidden="true" style="color: pink;"></i>
+  <%= link_to project_thanks_path(project), method: :delete,remote: true do %>
+  Thanks!<i class="fa fa-heart" aria-hidden="true" style="color: pink;"></i>
   <%= project.thanks.count %>
   <% end %>
 <% else %>
-  <%= link_to project_thanks_path(project), method: :post do %>
-  Thanks!<i class="fa-solid fa-heart" aria-hidden="true"></i>
+  <%= link_to project_thanks_path(project), method: :post,remote: true do %>
+  Thanks!<i class="fa fa-heart" aria-hidden="true"></i>
   <%= project.thanks.count %>
   <% end %>
 <% end %>

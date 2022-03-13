@@ -5,6 +5,7 @@ class Project < ApplicationRecord
   has_many :view_counts, dependent: :destroy
   has_many :tag_maps, dependent: :destroy
   has_many :tags, through: :tag_maps
+  has_many_attached :project_images
   has_one_attached :project_image
 
 

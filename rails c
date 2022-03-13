@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /home/ec2-user/environment/searchct/app/controllers/public/searches_controller.rb:14 Public::SearchesController#search:
+
+     [1;34m9[0m:     [1;34m# date_selectで選択された値をparamsからTimeオブジェクトにする。[0m
+    [1;34m10[0m:     [1;34m#1.2がそろったら3を使うif文（空かどうか確認する。）[0m
+    [1;34m11[0m:     year = params[[31m[1;31m'[0m[31mdate(1i)[1;31m'[0m[31m[0m]
+    [1;34m12[0m:     month = params[[31m[1;31m'[0m[31mdate(2i)[1;31m'[0m[31m[0m]
+    [1;34m13[0m:     day = params[[31m[1;31m'[0m[31mdate(3i)[1;31m'[0m[31m[0m]
+ => [1;34m14[0m:   binding.pry
+    [1;34m15[0m:     [32mif[0m year.present? && month.present? && @region.present?
+    [1;34m16[0m:       date = [1;34;4mTime[0m.gm(year, month ,day)
+    [1;34m17[0m:       [1;34m#日付で検索[0m
+    [1;34m18[0m:       flash[[33m:result[0m] = [31m[1;31m"[0m[31m検索結果は以下のとおりです[1;31m"[0m[31m[0m
+    [1;34m19[0m:       @records = [1;34;4mProject[0m.search_for(keyword,salesman).where([35mcreated_at[0m: [date.at_beginning_of_month..date.end_of_month]).where([35mregion[0m: @region)
+

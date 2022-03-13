@@ -1,0 +1,15 @@
+
+[1mFrom:[0m /home/ec2-user/environment/searchct/app/controllers/public/searches_controller.rb:13 Public::SearchesController#search:
+
+     [1;34m8[0m:     @region = params[[33m:region[0m]
+     [1;34m9[0m: 
+    [1;34m10[0m:     year = params[[31m[1;31m'[0m[31mdate(1i)[1;31m'[0m[31m[0m]
+    [1;34m11[0m:     month = params[[31m[1;31m'[0m[31mdate(2i)[1;31m'[0m[31m[0m]
+    [1;34m12[0m:     day = params[[31m[1;31m'[0m[31mdate(3i)[1;31m'[0m[31m[0m]
+ => [1;34m13[0m:     binding.pry
+    [1;34m14[0m:     ページ遷移時のアクション
+    [1;34m15[0m:     [32mif[0m day == [31m[1;31m"[0m[31m1[1;31m"[0m[31m[0m && keyword == [31m[1;31m"[0m[31m[1;31m"[0m[31m[0m && salesman == [31m[1;31m"[0m[31m[1;31m"[0m[31m[0m && year == [31m[1;31m"[0m[31m[1;31m"[0m[31m[0m && month == [31m[1;31m"[0m[31m[1;31m"[0m[31m[0m && @region == [31m[1;31m"[0m[31m[1;31m"[0m[31m[0m
+    [1;34m16[0m:       flash[[33m:alert[0m] = [31m[1;31m"[0m[31m案件一覧[1;31m"[0m[31m[0m
+    [1;34m17[0m:       [1;34;4mProject[0m.all
+    [1;34m18[0m:       [32mreturn[0m
+

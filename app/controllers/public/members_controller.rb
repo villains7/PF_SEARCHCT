@@ -7,9 +7,19 @@ class Public::MembersController < ApplicationController
   end
 
   def edit
+    @member = Member.find(params[:id])
   end
 
   def update
+     @member = Member.find(params[:id])
+     @member.update(member_params)
+     redirect_to member_path(@member)
+  end
+
+  private
+
+  def member_params
+    params.require(:member).permit(:last_name,:first_name,:email,:region,:section,:carrer,:year,:month,:profile_image)
   end
 
 
