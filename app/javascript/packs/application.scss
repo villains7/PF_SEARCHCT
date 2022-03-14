@@ -7,13 +7,18 @@
 .down_button {
   color:#583f99;
 }
+
 body {
   font-family: 'Klee One', cursive;
 }
 
+.crown {
+  color:#ffc993;
+}
+
 .fc table{
   background-color: #fff;
- }
+}
 .fc-button {
   background-color: #c7b2d6;
 }
@@ -24,6 +29,14 @@ body {
  .fc-day-sun {
   background-color: #ffeaea;
  }
+
+.edit_btn {
+  background: linear-gradient(#b2d235, #d3e9d0);
+}
+
+.update_btn {
+  background: linear-gradient(#e0f1f4, #84ccce);
+}
 
 ul {
   list-style: none;

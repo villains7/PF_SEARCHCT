@@ -12,7 +12,7 @@ class  Public::SearchesController < ApplicationController
     @salesman = params[:salesman]
     #選択された地域
     @region = params[:region]
-
+　　#date_selectで選択された日付
     year = params['date(1i)']
     month = params['date(2i)']
     day = params['date(3i)']
@@ -26,11 +26,12 @@ class  Public::SearchesController < ApplicationController
       flash[:alert] = "年を入力してください"
       return
     end
+　
     #チェックされたタグ
     tag_ids = params[:tag_ids]
     tags = Tag.where(id: tag_ids)
 
-    if year.present? && month.present? && @region.present? && tag_ids.present?
+    if year.present? && month.present? && @region.present? && !tag_ids == ""
       # date_selectで選択された値をparamsからTimeオブジェクトにする
       @date = Time.gm(year, month ,day)
       #日付,地域、キーワード、営業名、タグでアンド検索
@@ -41,7 +42,7 @@ class  Public::SearchesController < ApplicationController
       #日付、地域、キーワード、営業名でアンド検索
       flash[:result] = "検索結果は以下のとおりです"
       @records = Project.search_for(@keyword,@salesman).where(created_at: [@date.at_beginning_of_month..@date.end_of_month]).where(region: @region)
-    elsif  year.present? && month.present? && tag_ids.present?
+    elsif  year.present? && month.present? && !tag_ids == ""
        @date = Time.gm(year, month ,day)
       #日付、タグ、キーワード、営業名でアンド検索
       flash[:result] = "検索結果は以下のとおりです"
@@ -51,11 +52,12 @@ class  Public::SearchesController < ApplicationController
       flash[:result] = "検索結果は以下のとおりです"
       @records =  Project.search_for(@keyword,@salesman).where(region: @region)
     elsif tag_ids.present?
-      #タグのみで検索
+      #タグ、キーワードで検索
       flash[:result] = "検索結果は以下のとおりです"
-      @records = Project.joins(:tag_maps).where(tag_maps:{tag_id: tags})
+      @records = Project.joins(:tag_maps).where(tag_maps:{tag_id: tags}).search_for(@keyword,@salesman)
     else
       #キーワード、営業名でアンド検索。分岐はモデルに記載あり。
+      flash[:result] = "検索結果は以下のとおりです"
       @records = Project.search_for(@keyword,@salesman)
     end
   end

@@ -1,7 +1,7 @@
 <div class= "container">
   <div class= "card shadow">
-    <div class= "card-body">
-      <h4>マイページ<i class="fa fa-user-circle"></i></h4>
+    <div class= "card-body m-3">
+      <h3>マイページ</h3>
         <div class= "row">
           <div class="col-3">
             <%= image_tag @member.get_profile_image(30,30),class:"img-fluid rounded-circle";%>
@@ -30,8 +30,13 @@
                 <p style="border-bottom: solid 1px">略歴: <%= @member.carrer %></p>
               <% end %>
             </p>
+            <p class= "card-text">
+              <% if @member == current_member %>
+                <%= link_to 'ユーザー情報を編集する',edit_member_path(@member),class: "btn w-50 edit_btn"%>
+              <% end %>
+            </p>
             <!--<p class= "card-text">-->
-              <p>投稿した案件</p>
+              <h5>投稿した案件</h5>
               <table class ="table">
                 <thead>
                   <tr>
@@ -47,7 +52,7 @@
                     <td><%= link_to project.title,project, class: "project_#{project.id}" %></td>
                     <td><%= project.region %></td>
                       <% if @member == current_member %>
-                    <td><%= link_to "編集",edit_project_path(project), class: "btn btn-sm btn-success edit_project_#{project.id}" %> </td>
+                    <td><%= link_to "編集",edit_project_path(project), class: "btn btn-sm edit_project_#{project.id} edit_btn" %> </td>
                       <% end %>
                     <% end %>
                   </tr>
@@ -58,10 +63,7 @@
               </table>
               <% if @member == current_member %>
                 <%= render 'public/thanks/index',thanks_project: @thanks_projects %>
-              <p class= "card-text">
-                <%= link_to 'ユーザー情報を編集する',edit_member_path(@member),class: "btn btn-success w-50"%>
               <% end %>
-              </p>
           </div>
         </div>
     </div>
