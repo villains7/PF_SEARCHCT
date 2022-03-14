@@ -6,13 +6,27 @@ class  Public::SearchesController < ApplicationController
 
 
   def search
-    #入力されたキーワード
+    @result = Project.includes(:tag_maps)
+    
+    #入力されたキーワードで検索
     @keyword = params[:keyword]
+    if @keyword.present?
+      @result = @result.where("title like ? OR caption like ?", "%#{@keyword}%", "%#{@keyword}%")
+    end
+
     #担当営業
     @salesman = params[:salesman]
+    if @salesman.present?
+      @result = @result.where("salesman like ? ", "%#{@salesman}%")
+    end
+    
     #選択された地域
     @region = params[:region]
-
+    if @region.present?
+      @result = @result.where(region: @region)
+    end
+    
+    #date_selectで選択された日付
     year = params['date(1i)']
     month = params['date(2i)']
     day = params['date(3i)']
@@ -26,38 +40,21 @@ class  Public::SearchesController < ApplicationController
       flash[:alert] = "年を入力してください"
       return
     end
-    #チェックされたタグ
-    tag_ids = params[:tag_ids]
-    tags = Tag.where(id: tag_ids)
-
-    if year.present? && month.present? && @region.present? && tag_ids.present?
+    
+    if year.present? && month.present?
       # date_selectで選択された値をparamsからTimeオブジェクトにする
       @date = Time.gm(year, month ,day)
-      #日付,地域、キーワード、営業名、タグでアンド検索
-      flash[:result] = "検索結果は以下のとおりです"
-      @records = Project.search_for(@keyword,@salesman).where(created_at: [@date.at_beginning_of_month..@date.end_of_month]).where(region: @region).joins(:tag_maps).where(tag_maps:{tag_id: tags})
-    elsif year.present? && month.present? && @region.present?
-      @date = Time.gm(year, month ,day)
-      #日付、地域、キーワード、営業名でアンド検索
-      flash[:result] = "検索結果は以下のとおりです"
-      @records = Project.search_for(@keyword,@salesman).where(created_at: [@date.at_beginning_of_month..@date.end_of_month]).where(region: @region)
-    elsif  year.present? && month.present? && tag_ids.present?
-       @date = Time.gm(year, month ,day)
-      #日付、タグ、キーワード、営業名でアンド検索
-      flash[:result] = "検索結果は以下のとおりです"
-      @records = Project.search_for(@keyword,@salesman).where(created_at: [@date.at_beginning_of_month..@date.end_of_month]).joins(:tag_maps).where(tag_maps:{tag_id: tags})
-    elsif @region.present?
-      #地域、キーワード、営業名でアンド検索
-      flash[:result] = "検索結果は以下のとおりです"
-      @records =  Project.search_for(@keyword,@salesman).where(region: @region)
-    elsif tag_ids.present?
-      #タグのみで検索
-      flash[:result] = "検索結果は以下のとおりです"
-      @records = Project.joins(:tag_maps).where(tag_maps:{tag_id: tags})
-    else
-      #キーワード、営業名でアンド検索。分岐はモデルに記載あり。
-      @records = Project.search_for(@keyword,@salesman)
+      @result = @result.where(created_at: [@date.at_beginning_of_month..@date.end_of_month])
     end
+    
+    #チェックされたタグで検索
+    @tag_ids = params[:tag_ids]
+
+    if @tag_ids.count > 1
+      @result = @result.where(tag_maps: {tag_id: @tag_ids})
+    end
+
+  
   end
 end
 

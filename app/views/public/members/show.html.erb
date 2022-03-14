@@ -1,10 +1,10 @@
 <div class= "container">
   <div class= "card shadow">
-    <div class= "card-body">
-      <h4>マイページ<i class="fa fa-user-circle"></i></h4>
+    <div class= "card-body m-3">
+      <h3>マイページ</h3>
         <div class= "row">
           <div class="col-3">
-            <%= image_tag @member.get_profile_image(30,30),class:"img-fluid rounded-circle";%>
+            <%= image_tag @member.get_profile_image(30,30),class:"img-fluid rounded-circle shadow";%>
           </div>
           <div class= "col-9">
             <p class= "card-text" style="border-bottom: solid 1px">
@@ -30,38 +30,17 @@
                 <p style="border-bottom: solid 1px">略歴: <%= @member.carrer %></p>
               <% end %>
             </p>
-            <!--<p class= "card-text">-->
-              <p>投稿した案件</p>
-              <table class ="table">
-                <thead>
-                  <tr>
-                    <th>案件名</th>
-                    <th>地域</th>
-                    <th></th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <% if @projects.present? %>
-                    <% @projects.each do |project| %>
-                  <tr>
-                    <td><%= link_to project.title,project, class: "project_#{project.id}" %></td>
-                    <td><%= project.region %></td>
-                      <% if @member == current_member %>
-                    <td><%= link_to "編集",edit_project_path(project), class: "btn btn-sm btn-success edit_project_#{project.id}" %> </td>
-                      <% end %>
-                    <% end %>
-                  </tr>
-                  <% else %>
-                    <p>投稿した案件はありません</p>
-                  <% end %>
-                </tbody>
-              </table>
+            <p class= "card-text">
+              <% if @member == current_member %>
+                <%= link_to 'ユーザー情報を編集する',edit_member_path(@member),class: "btn w-50 edit_btn"%>
+              <% end %>
+            </p>
+            <h5>投稿した案件</h5>
+              <%= render 'project_index',projects: @projects,member: @member %>
+            <h5>Thanks<i class="fa fa-heart"></i>した記事一覧</h5>
               <% if @member == current_member %>
                 <%= render 'public/thanks/index',thanks_project: @thanks_projects %>
-              <p class= "card-text">
-                <%= link_to 'ユーザー情報を編集する',edit_member_path(@member),class: "btn btn-success w-50"%>
               <% end %>
-              </p>
           </div>
         </div>
     </div>

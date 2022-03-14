@@ -19,6 +19,6 @@ class Member < ApplicationRecord
   SECTION = [["営業部","営業部"],["業務部","業務部"],["経理部","経理部"]]
 
   def get_profile_image(weight,height)
-    (profile_image.attached) ? profile_image : 'noimage.jpg'
+    (profile_image.attached?) ? profile_image : 'noimage.jpg'
   end
 end
