@@ -16,7 +16,9 @@
           <% end %>
         <% end %>
         投稿者：<%= @project.member.last_name %><%= @project.member.first_name %>
-        <%= link_to "りんく",member_path(@member) %>
+        <%= link_to member_path(@member) do%>
+        <i class="fas fa-user"></i>
+        <% end %>
       </div>
       <div class= "card-text ml-3 mb-3">
         閲覧数：<%= @project.view_counts.count %>
@@ -35,12 +37,12 @@
         <% end %>
       </div>
       <div class= "card-item ml-3 mb-3">
-        <%= render "public/thanks/btn",project: @project %>
+        <p id="project_<%= @project.id %>"><%= render "public/thanks/btn",project: @project %></p>
       </div>
-      <div class= "card-item ml-3 mb-3">
+      <div id="project_comment_<%= @project.id %>" class= "card-item ml-3 mb-3">
         <%= render "public/comments/index",project: @project %>
       </div>
-      <div class= "card-item ml-3 mb-3 mr-3">
+       <div class= "card-item ml-3 mb-3 mr-3">
         <%= render "public/comments/form",project: @project,comment: @comment %>
       </div>
     </div>

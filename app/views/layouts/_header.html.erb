@@ -4,21 +4,21 @@
       <% if member_signed_in? %>
         <a class="navbar-brand" href="/top"><%= image_tag 'logo-head.png', size:"300x150" %></a>
           <button class= "navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <i class="fa fa-chevron-square-down"></i>
+           <i class="fas fa-caret-square-down"></i>
           </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                    <%= link_to "マイページ",member_path(current_member.id),class: "btn btn-light mx-2 rounded-pill" %>
+                    <%= link_to "マイページ",member_path(current_member.id),class: "btn btn-light mx-2 rounded-pill mb-3" %>
                   </li>
                   <li class="nev-item">
-                    <%= link_to "案件登録",new_project_path,class: "btn btn-light mx-2 rounded-pill" %>
+                    <%= link_to "案件登録",new_project_path,class: "btn btn-light mx-2 rounded-pill mb-3" %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to "詳細検索",search_path,class: "btn btn-light mx-2 rounded-pill" %>
+                    <%= link_to "詳細検索",search_path,class: "btn btn-light mx-2 rounded-pill mb-3" %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to "ログアウト",destroy_member_session_path,method: :delete,class: "btn btn-light mx-2 rounded-pill" %>
+                    <%= link_to "ログアウト",destroy_member_session_path,method: :delete,class: "btn btn-light mx-2 rounded-pill mb-3" %>
                   </li>
               </ul>
             </div>
@@ -30,10 +30,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                    <%= link_to "新規登録",new_member_registration_path,class: "btn btn-light mx-2 rounded-pill" %>
+                    <%= link_to "新規登録",new_member_registration_path,class: "btn btn-light mx-2 rounded-pill mb-3" %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to "ログイン",new_member_session_path,class: "btn btn-light mx-2 rounded-pill"%>
+                    <%= link_to "ログイン",new_member_session_path,class: "btn btn-light mx-2 rounded-pill mb-3"%>
                   </li>
                 <% end %>
               </ul>

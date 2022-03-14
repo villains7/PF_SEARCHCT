@@ -6,17 +6,15 @@
         <th scope= "col" class="text-nowrap">案件名</th>
         <th scope= "col" class="text-nowrap">地域</th>
         <th scope= "col" class="text-nowrap">担当営業</th>
-        <th></th>
       </tr>
     </thead>
     <tbody>
          <% project.each do |project| %>
       <tr>
         <td><%= project.view_counts.count %></td>
-        <td scope= "col" class="text-nowrap"><%= project.title %></td>
+        <td scope= "col" class="text-nowrap"><%= link_to project.title, project, class: "project_#{project.id}"%></td>
         <td scope= "col" class="text-nowrap"><%= project.region %></td>
         <td scope= "col" class="text-nowrap"><%= project.salesman %></td>
-        <td scope= "col" class="text-nowrap"><%= link_to "詳細",project_path(project),class: "btn btn-primary" %></td>
       <% end %>
       </tr>
     </tbody>

@@ -1,6 +1,6 @@
-<%= form_with model:[project,comment] do |f| %>
-  <%= f.text_area :comment,rows: '5',placeholder: "コメント",class: "w-100" %>
-  <div class= "text-right">
+<%= form_with model:[project,comment],local: false do |f| %>
+  <%= f.text_area :comment,rows: '5',placeholder: "コメントはこちら",class: "w-100" %>
+  <div class= "text-right　ml-3 mb-3">
     <%= f.submit "コメントを送信",class: "btn btn-success" %>
   </div>
 <% end %>
