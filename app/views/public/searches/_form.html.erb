@@ -20,9 +20,10 @@
   </div>
     <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag|%>
       <%= tag.label do %>
-      <%= tag.check_box%>
+        <%= tag.check_box checked: @tag_ids.include?(tag.object.id.to_s)%>
       <%= tag.text%>
       <% end %>
     <% end %>
    <br><%= f.submit '検索',class: "btn  w-25 update_btn" %>
 <% end %>
+

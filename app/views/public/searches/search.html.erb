@@ -10,10 +10,10 @@
   </div>
   <div class= "card shadow">
     <div class= "card-body">
-      <% if @records.present?%>
+      <% if @result.present?%>
         <h5 class= "card-text">検索結果</h5>
-        <%= flash[:result] %>
-        <%= render 'index',project: @records %>
+        <p>検索結果は以下のとおりです</p>
+        <%= render 'index',project: @result %>
       <% else %>
         <h5 class= "card-text">検索結果</h5>
         <p>検索結果はありません</p>
