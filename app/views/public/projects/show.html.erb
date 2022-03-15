@@ -25,16 +25,10 @@
       </div>
       <div class= "card-text ml-3 mb-3">
         <!--splitメソッドで文字列を分割。改行コードをhtmlで表示した時に<br>にする-->
-        概要<br><%= safe_join(@project.caption.split("\n"),tag(:br)) %>
+        備考<br><%= safe_join(@project.caption.split("\n"),tag(:br)) %>
       </div>
       <div class= "card-item ml-3 mb-3">
-        <% if @project.project_images.attached? %>
-          <% @project.project_images.each do |image| %>
-           <%= image_tag image,size: '300x400'%>
-          <% end %>
-        <% else %>
           <%= image_tag @project.project_image,size: '300x400' %>
-        <% end %>
       </div>
       <div class= "card-item ml-3 mb-3">
         <p id="project_<%= @project.id %>"><%= render "public/thanks/btn",project: @project %></p>

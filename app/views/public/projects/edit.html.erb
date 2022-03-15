@@ -24,13 +24,7 @@
         <%= f.text_area :caption,rows: '15',class: "w-75"%>
       </div>
       <div class= "card-item text-center mb-3">
-        <% if @project.project_images.attached? %>
-          <% @project.project_images.each do |image| %>
-           <%= image_tag image,size: '300x400'%>
-          <% end %>
-        <% else %>
-          <%= image_tag @project.project_image,size: '300x400' %>
-        <% end %>
+        <%= image_tag @project.project_image,size: '300x400' %>
       </div>
       <div class= "card-item text-center mb-3">
         <%= f.file_field :project_images,accept: "image/*", multiple: true %>
