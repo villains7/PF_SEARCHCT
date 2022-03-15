@@ -19,7 +19,7 @@ import interactionPlugin from '@fullcalendar/interaction';
 import bootstrapPlugin from '@fullcalendar/bootstrap';
 
 document.addEventListener('turbolinks:load', function() {
-  var calendarEl = document.getElementById('calendar');
+  var calendarEl = document.getElementById("calendar");
   var calendar = new Calendar(calendarEl, {
     locale: 'ja',
     height: 'auto',
