@@ -1,27 +1,66 @@
 <%= form_with url: result_path, method: :get, local: true do |f| %>
   <div class= "form-group d-md-flex">
     <div class="form mr-3">
-      <%= f.label :keyword,"キーワード" %>
-      <%= f.text_field :keyword ,value: keyword,placeholder: "キーワードを入力"%>
+      <% if keyword.present?%>
+        <!--検索結果に表示-->
+        <%= f.label :keyword,"キーワード" %>
+        <%= f.text_field :keyword ,value: keyword,placeholder: "キーワードを入力"%>
+      <% else %>
+        <!--検索画面遷移時に表示-->
+        <%= f.label :keyword,"キーワード" %>
+        <%= f.text_field :keyword ,placeholder: "キーワードを入力"%>
+      <% end %>
     </div>
     <div class="form">
-      <%= f.label :salesman,"担当営業名"%>
-      <%= f.text_field :salesman ,value: salesman,placeholder: "担当営業名を入力"%>
+      <% if salesman.present? %>
+        <!--検索結果に表示-->
+        <%= f.label :salesman,"担当営業名"%>
+        <%= f.text_field :salesman ,value: salesman,placeholder: "担当営業名を入力"%>
+      <% else %>
+        <!--検索画面遷移時に表示-->
+        <%= f.label :salesman,"担当営業名"%>
+        <%= f.text_field :salesman ,placeholder: "担当営業名を入力"%>
+      <% end %>
     </div>
   </div>
   <div class="form-group">
-    <%= f.label :region,"地域を選択"%>
-    <%= f.select :region, Member::REGION, selected: region, include_blank: "地域"%>
+    <% if region.present? %>
+    <!--検索結果に表示-->
+      <%= f.label :region,"地域を選択"%>
+      <%= f.select :region, Member::REGION, selected: region, include_blank: "地域"%>
+    <% else %>
+    <!--検索画面遷移時に表示-->
+      <%= f.label :region,"地域を選択"%>
+      <%= f.select :region, Member::REGION,include_blank: "地域"%>
+    <% end %>
   </div>
   <div class="form-group">
-    <%= f.label :date,"年月を選択"%>
-    <!--終わりの年を設定しないと、続けて検索をする際に表示年数が少なくなってしまうからend_year設定。-->
-    <%= f.date_select :date,start_year: 2013,end_year: 2027,use_month_numbers: true,discard_day: true,include_blank: true,selected: date%>
+    <% if date.present? %>
+      <%= f.label :date,"年月を選択"%>
+      <!--検索結果に表示-->
+      <!--終わりの年を設定しないと、続けて検索をする際に表示年数が少なくなってしまうからend_year設定。-->
+      <%= f.date_select :date,start_year: 2013,end_year: 2027,use_month_numbers: true,discard_day: true,include_blank: true,selected: date%>
+    <% else %>
+      <!--検索画面遷移時に表示-->
+      <%= f.label :date,"年月を選択"%>
+      <%= f.date_select :date,start_year: 2013,end_year: 2027,use_month_numbers: true,discard_day: true%>
+    <% end %>
   </div>
-    <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag|%>
-      <%= tag.label do %>
-        <%= tag.check_box checked: tag_ids.include?(tag.object.id.to_s)%>
-      <%= tag.text%>
+    <% if tag_ids.present? %>
+      <!--検索結果に表示-->
+      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag|%>
+        <%= tag.label do %>
+          <%= tag.check_box checked: tag_ids.include?(tag.object.id.to_s)%>
+        <%= tag.text%>
+        <% end %>
+      <% end %>
+    <% else %>
+      <!--検索画面遷移時に表示-->
+      <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag|%>
+        <%= tag.label do %>
+          <%= tag.check_box%>
+        <%= tag.text%>
+        <% end %>
       <% end %>
     <% end %>
    <br><%= f.submit '検索',class: "btn  w-25 update_btn" %>

@@ -3,7 +3,7 @@
     <div class= "card-body">
       <div class= "input-group">
         <h5 class= "card-text mr-3">詳細検索<i class="fa fa-search"></i></h5>
-         <%= render 'form' %>
+         <%= render 'form',keyword: @keyword, salesman: @salesman, region: @region, date: @date, tag_ids: @tag_ids %>
       </div>
       <strong><%= flash[:alert] %></strong>
     </div>
