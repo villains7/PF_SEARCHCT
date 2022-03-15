@@ -37,8 +37,8 @@
             </p>
             <h5>投稿した案件</h5>
               <%= render 'project_index',projects: @projects,member: @member %>
-            <h5>Thanks<i class="fa fa-heart"></i>した記事一覧</h5>
               <% if @member == current_member %>
+              <h5>Thanks<i class="fa fa-heart"></i>した記事一覧</h5>
                 <%= render 'public/thanks/index',thanks_project: @thanks_projects %>
               <% end %>
           </div>
