@@ -43,7 +43,7 @@
     <% else %>
       <!--検索画面遷移時に表示-->
       <%= f.label :date,"年月を選択"%>
-      <%= f.date_select :date,start_year: 2013,end_year: 2027,use_month_numbers: true,discard_day: true%>
+      <%= f.date_select :date,start_year: 2013,end_year: 2027,use_month_numbers: true,discard_day: true,include_blank: true%>
     <% end %>
   </div>
     <% if tag_ids.present? %>
