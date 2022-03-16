@@ -1,13 +1,92 @@
 <div class= "container">
   <div class= "card shadow">
     <div class= "card body">
-      <h4 class= "card-title mt-3 ml-3">
-       <%= @project.customer %>
-      </h4>
-      <div class= "card-text d-flex flex-row ml-3">
-        <p class= "mr-3">地域：<%= @project.region %></p>
-        <p>担当営業：<%= @project.salesman %></p>
-      </div>
+      <h4 class= "mt-3 mb-5 ml-3">案件詳細</h4>
+        <div class= "row ml-3">
+          <label class="col-sm-2">タイトル</label>
+          <div class="col-sm-10">
+          <%= @project.title%>
+          </div>
+        </div>
+        <div class= "row ml-3">
+          <label class="col-sm-2">顧客名</label>
+          <div class="col-sm-10">
+          <%= @project.customer %>
+          </div>
+        </div>
+        <div class= "row ml-3">
+          <label class="col-sm-2">地域</label>
+          <div class="col-sm-10">
+          <%= @project.region %>
+          </div>
+        </div>
+        <div class= "row ml-3">
+          <label class="col-sm-2">担当</label>
+          <div class="col-sm-10">
+          <%= @project.salesman %>
+          </div>
+        </div>
+        <div class= "row ml-3">
+          <label class="col-sm-2">リース開始日</label>
+          <div class="col-sm-10">
+          <%= @project.start_year %>年<%= @project.start_month %>月<%= @project.start_day %>日
+          </div>
+        </div>
+        <div class= "row ml-3">
+          <label class="col-sm-2">リース終了日</label>
+          <div class="col-sm-10">
+          <%= @project.end_year %>年<%= @project.end_month %>月<%= @project.end_day %>日
+          </div>
+        </div>
+        <div class= "row ml-3">
+          <label class="col-sm-2">登録番号</label>
+          <div class="col-sm-10">
+            <%= @project.registration_number %>
+          </div>
+        </div>
+        <div class= "row ml-3">
+          <label class="col-sm-2">車体番号</label>
+          <div class="col-sm-10">
+            <%= @project.body_number%>
+          </div>
+        </div>
+        <div class= "row ml-3">
+          <label class="col-sm-2">車種</label>
+          <div class="col-sm-10">
+            <%= @project.vehicle_type_i18n%>
+          </div>
+        </div>
+        <div class= "row ml-3">
+          <label class="col-sm-2">リース種別</label>
+          <div class="col-sm-10">
+            <%= @project.lease_type_i18n %>
+          </div>
+        </div>
+        <div class= "row ml-3">
+          <label class="col-sm-2">保険</label>
+          <div class="col-sm-10">
+            <%= @project.insurance_i18n%>
+          </div>
+        </div>
+        <div class= "row ml-3">
+          <label class="col-sm-2">整備工場</label>
+          <div class="col-sm-10">
+            <%= @project.body_shop%>
+          </div>
+        </div>
+        <div class= "row ml-3">
+          <label class="col-sm-2">備考</label>
+          <div class="col-sm-10">
+          <!--splitメソッドで文字列を分割。改行コードをhtmlで表示した時に<br>にする-->
+          <%= safe_join(@project.caption.split("\n"),tag(:br)) %>
+          </div>
+        </div>
+        <div class= "row ml-3">
+          <label class="col-sm-2">添付資料</label>
+          <div class="col-sm-10">
+             <%= image_tag @project.project_image,size: '300x400',class:"shadow"; %>
+          </div>
+        </div>
       <div class= "card-text ml-3 mb-3">
         <%= @project.created_at.strftime('%Y年%m月')%>
         <% if @project.tags.present? %>
@@ -22,13 +101,6 @@
       </div>
       <div class= "card-text ml-3 mb-3">
         閲覧数：<%= @project.view_counts.count %>
-      </div>
-      <div class= "card-text ml-3 mb-3">
-        <!--splitメソッドで文字列を分割。改行コードをhtmlで表示した時に<br>にする-->
-        備考<br><%= safe_join(@project.caption.split("\n"),tag(:br)) %>
-      </div>
-      <div class= "card-item ml-3 mb-3">
-          <%= image_tag @project.project_image,size: '300x400' %>
       </div>
       <div class= "card-item ml-3 mb-3">
         <p id="project_<%= @project.id %>"><%= render "public/thanks/btn",project: @project %></p>

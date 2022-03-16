@@ -45,6 +45,6 @@ class Public::ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:customer, :caption, :region, :start_year, :start_month, :start_day, :end_year, :end_month, :end_day, :vehicle_type, :lease_type, :body_shop, :salesman, :registration_number, :body_number, :insurance, :project_image, tag_ids: [])
+    params.require(:project).permit(:title, :customer, :caption, :region, :start_year, :start_month, :start_day, :end_year, :end_month, :end_day, :vehicle_type, :lease_type, :body_shop, :salesman, :registration_number, :body_number, :insurance, :project_image, tag_ids: [])
   end
 end
