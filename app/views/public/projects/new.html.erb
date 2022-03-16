@@ -5,6 +5,10 @@
         <%= render 'error',project: @project %>
         <%= form_with model: @project, url: projects_path,method: :post do |f| %>
         <div class= "card-text text-center mb-3">
+          <%= f.label :"タイトル"%>
+          <%= f.text_field :title ,placeholder: "案件タイトルを入力してください",class: "w-50"%>
+        </div>
+        <div class= "card-text text-center mb-3">
           <%= f.label :"顧客名"%>
           <%= f.text_field :customer ,placeholder: "顧客名",class: "w-50"%>
         </div>

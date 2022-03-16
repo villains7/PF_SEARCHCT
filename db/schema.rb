@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2022_03_11_052548) do
 
   create_table "projects", force: :cascade do |t|
     t.integer "member_id", null: false
+    t.string "title", default: "", null: false
     t.string "customer", default: "", null: false
     t.text "caption", default: "", null: false
     t.string "region", default: "", null: false
