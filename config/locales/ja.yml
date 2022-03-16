@@ -1,4 +1,17 @@
 ja:
-  time:
-    formats:
-      default: "%Y年%m月"
+  enums:
+    project:
+      vehicle_type:
+        ele: "エル"
+        fonerd: "フォナード"
+        gigu: "ギグ"
+        others: "その他"
+      lease_type:
+        fl: "ファイナンスリース"
+        ml: "メンテナンスリース"
+        mj: "メンテナンス受託"
+        sl: "再リース"
+        smj: "再メンテナンス受託"
+      insurance:
+        yes: "保険あり"
+        no: "保険なし"
