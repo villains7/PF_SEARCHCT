@@ -13,7 +13,7 @@ class Project < ApplicationRecord
   validates :salesman, presence: true
 
   # 車種
-  enum vehicle_type: { ele:0, fonerd:1, gigu:2, others:3 }
+  enum vehicle_type: { eleho:0, fonerd:1, gigu:2, others:3 }
   # リース種別
   enum lease_type: { fl:0, ml:1, mj:2, sl:3, smj:4}
   # 保険の有無

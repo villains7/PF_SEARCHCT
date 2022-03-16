@@ -5,7 +5,7 @@
         <%= render 'error',project: @project %>
         <%= form_with model: @project, url: projects_path,method: :post do |f| %>
         <div class= "card-text text-center mb-3">
-          <%= f.text_field :customer ,placeholder: "顧客名",class: "w-75"%>
+          <%= f.text_field :customer ,placeholder: "顧客名",class: "w-50"%>
         </div>
         <div class= "card-text d-flex justify-content-center mb-3">
           <p class= "mr-3">
@@ -15,6 +15,33 @@
             <%= f.text_field :salesman,placeholder: "担当営業" %>
           </p>
         </div>
+         <div class= "card-text text-center mb-3">
+          <%= f.label :"登録番号" %>
+          <%= f.text_field :registration_number,placeholder: "ex羽星 130 い 0000" %>
+        </div>
+        <div class= "card-text text-center mb-3">
+          <%= f.label :"車体番号" %>
+          <%= f.text_field :body_number,placeholder: "FRF90-0000000"%>
+        </div>
+        <div class= "card-text text-center mb-3">
+          <%= f.select :vehicle_type,Project.vehicle_types_i18n.invert%>
+        </div>
+        <div class= "card-text text-center mb-3">
+          <%= f.select :lease_type,Project.lease_types_i18n.invert %>
+        </div>
+         <div class= "card-text text-center mb-3">
+          <%= f.radio_button :insurance ,:yes%>
+          <%= f.label :insurance, "保険あり" %>
+           <%= f.radio_button :insurance ,:no%>
+          <%= f.label :insurance, "保険なし" %>
+        </div>
+        <div class= "card-text text-center mb-3">
+          <%= f.label :"整備工場" %>
+          <%= f.text_field :body_shop%>
+        </div>
+        <div class= "row justify-content-center mb-3">
+          <%= f.text_area :caption,rows: '5',placeholder: "案件詳細説明をここに",class: "w-75" %>
+        </div>
         <div class= "row justify-content-center mb-3">
           <!--引数の順番によって役割が変わる。-->
           <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
@@ -23,10 +50,6 @@
                 <%= tag.text%>
               <% end %>
             <% end %>
-        </div>
-        <div class= "card-text text-center mb-3">
-        <div class= "row justify-content-center mb-3">
-          <%= f.text_area :caption,rows: '5',placeholder: "案件詳細説明をここに",class: "w-75" %>
         </div>
         <div class= "row justify-content-center mb-3">
           <%= f.file_field :project_image,accept: "image/*"%>

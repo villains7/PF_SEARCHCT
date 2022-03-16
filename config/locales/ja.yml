@@ -2,7 +2,7 @@ ja:
   enums:
     project:
       vehicle_type:
-        ele: "エル"
+        eleho: "エルホ"
         fonerd: "フォナード"
         gigu: "ギグ"
         others: "その他"
