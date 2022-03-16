@@ -7,8 +7,7 @@ class Project < ApplicationRecord
   has_many :tags, through: :tag_maps, dependent: :destroy
   has_one_attached :project_image
 
-  validates :title, presence: true
-  validates :caption, presence: true
+  validates :customer, presence: true
   validates :region, presence: true
   validates :salesman, presence: true
 

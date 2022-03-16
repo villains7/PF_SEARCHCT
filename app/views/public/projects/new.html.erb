@@ -5,6 +5,7 @@
         <%= render 'error',project: @project %>
         <%= form_with model: @project, url: projects_path,method: :post do |f| %>
         <div class= "card-text text-center mb-3">
+          <%= f.label :"顧客名"%>
           <%= f.text_field :customer ,placeholder: "顧客名",class: "w-50"%>
         </div>
         <div class= "card-text d-flex justify-content-center mb-3">
@@ -25,11 +26,11 @@
         </div>
          <div class= "card-text text-center mb-3">
           <%= f.label :"登録番号" %>
-          <%= f.text_field :registration_number,placeholder: "ex羽星 130 い 0000" %>
+          <%= f.text_field :registration_number,placeholder: "ex羽星 130 い 0000",class: "w-50" %>
         </div>
         <div class= "card-text text-center mb-3">
           <%= f.label :"車体番号" %>
-          <%= f.text_field :body_number,placeholder: "FRF90-0000000"%>
+          <%= f.text_field :body_number,placeholder: "FRF90-0000000",class: "w-50"%>
         </div>
         <div class= "card-text text-center mb-3">
           <%= f.label :"車種"%>
@@ -47,7 +48,7 @@
         </div>
         <div class= "card-text text-center mb-3">
           <%= f.label :"整備工場" %>
-          <%= f.text_field :body_shop%>
+          <%= f.text_field :body_shop,class: "w-50" %>
         </div>
         <div class= "row justify-content-center mb-3">
           <%= f.text_area :caption,rows: '5',placeholder: "備考はこちら",class: "w-75" %>
