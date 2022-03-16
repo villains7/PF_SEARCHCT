@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.down_button {
+.down_btn {
   color:#583f99;
 }
 
@@ -12,7 +12,7 @@ body {
   font-family: 'Klee One', cursive;
 }
 
-.sign_up_btn {
+.sign_up_btn  {
  background: linear-gradient(#cae5d3, #aed265);
 }
 .log_in_btn {
@@ -45,6 +45,13 @@ body {
   background: linear-gradient(#e0f1f4, #84ccce);
 }
 
+.new_btn  {
+ background: linear-gradient(#cae5d3, #aed265);
+}
+
+.comment_btn {
+  background: linear-gradient(#fcebef, #ef8bb6);
+}
 ul {
   list-style: none;
 }

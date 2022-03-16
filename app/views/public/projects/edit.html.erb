@@ -1,31 +1,36 @@
 <div class= "container">
   <div class= "card shadow">
-    <div class= "card body">
-      <h5 class= "card-title mt-3 ml-3">
+    <div class= "card-body">
+      <h4 class= "mt-3 ml-3 mb-5">案件編集</h4>
+      <h5 class= "card-text text-center mb-3">
         <%= form_with model: @project do |f| %>
-          案件タイトル<br><%= f.text_field :title,autofocus: true%>
+        <%= f.label :title, "案件タイトル"%>
+        <br><%= f.text_field :title,autofocus: true,class: "w-75" %>
       </h5>
-      <div class= "card-text d-flex flex-row ml-3">
+      <div class= "card-text text-center d-flex justify-content-center ml-3">
         <p class= "mr-3">地域：<%= f.select :region,Member::REGION,autofocus: true %></p>
         <p>担当営業：<%= f.text_field :salesman,autofocus: true%></p>
       </div>
-      <div class= "card-text ml-3 mb-3">
-        概要<br><%= f.text_area :caption,rows: '15',class: "w-50"%>
-      </div>
-      <div class= "card-item ml-3 mb-3">
-        <% if @project.project_images.attached? %>
-          <% @project.project_images.each do |image| %>
-           <%= image_tag image,size: '300x400'%>
+      <div class= "row justify-content-center mb-3">
+        <!--引数の順番によって役割が変わる。-->
+        <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+            <%= tag.label do %>
+              <%= tag.check_box %>
+              <%= tag.text%>
+            <% end %>
           <% end %>
-        <% else %>
-          <%= image_tag @project.project_image,size: '300x400' %>
-        <% end %>
+        </div>
+      <div class= "card-text text-center mb-3">
+        <%= f.text_area :caption,rows: '15',class: "w-75"%>
       </div>
-      <div class= "card-item ml-3 mb-3">
+      <div class= "card-item text-center mb-3">
+        <%= image_tag @project.project_image,size: '300x400' %>
+      </div>
+      <div class= "card-item text-center mb-3">
         <%= f.file_field :project_images,accept: "image/*", multiple: true %>
       </div>
-      <div class= "card-item ml-3 mb-3">
-        <%= f.submit "変更を保存",class: "btn w-50 update_btn" %>
+      <div class= "card-item text-center mb-3">
+        <%= f.submit "変更を保存",url: projects_path(@project),method: :patch,class: "btn w-75 update_btn" %>
       </div>
         <% end %>
     </div>
