@@ -76,8 +76,10 @@ ActiveRecord::Schema.define(version: 2022_03_11_052548) do
     t.string "region", default: "", null: false
     t.string "start_year", default: "", null: false
     t.string "start_month", default: "", null: false
+    t.string "start_day", default: "", null: false
     t.string "end_year", default: "", null: false
     t.string "end_month", default: "", null: false
+    t.string "end_day", default: "", null: false
     t.string "salesman", default: "", null: false
     t.integer "vehicle_type", default: 0, null: false
     t.integer "lease_type", default: 0, null: false

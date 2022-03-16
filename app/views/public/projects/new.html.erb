@@ -15,6 +15,14 @@
             <%= f.text_field :salesman,placeholder: "担当営業" %>
           </p>
         </div>
+        <div class= "card-text text-center mb-3">
+          <%= f.label :"リース開始日"%>
+          <%= f.select :start_year,*[2013..2022],autofocus: true %>年<%= f.select :start_month, *[1..12],autofocus: true %>月<%= f.select :start_day, *[1..31],autofocus: true %>日
+        </div>
+        <div class= "card-text text-center mb-3">
+          <%= f.label :"リース終了日"%>
+          <%= f.select :end_year,*[2022..2032],autofocus: true %>年<%= f.select :end_month, *[1..12],autofocus: true %>月<%= f.select :end_day, *[1..31],autofocus: true %>日
+        </div>
          <div class= "card-text text-center mb-3">
           <%= f.label :"登録番号" %>
           <%= f.text_field :registration_number,placeholder: "ex羽星 130 い 0000" %>
@@ -24,9 +32,11 @@
           <%= f.text_field :body_number,placeholder: "FRF90-0000000"%>
         </div>
         <div class= "card-text text-center mb-3">
+          <%= f.label :"車種"%>
           <%= f.select :vehicle_type,Project.vehicle_types_i18n.invert%>
         </div>
         <div class= "card-text text-center mb-3">
+          <%= f.label :"リース種別"%>
           <%= f.select :lease_type,Project.lease_types_i18n.invert %>
         </div>
          <div class= "card-text text-center mb-3">
@@ -40,7 +50,7 @@
           <%= f.text_field :body_shop%>
         </div>
         <div class= "row justify-content-center mb-3">
-          <%= f.text_area :caption,rows: '5',placeholder: "案件詳細説明をここに",class: "w-75" %>
+          <%= f.text_area :caption,rows: '5',placeholder: "備考はこちら",class: "w-75" %>
         </div>
         <div class= "row justify-content-center mb-3">
           <!--引数の順番によって役割が変わる。-->
