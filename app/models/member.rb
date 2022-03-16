@@ -6,7 +6,7 @@ class Member < ApplicationRecord
   has_many :projects, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :thanks, dependent: :destroy
-  has_many :thanks_projects, through: :thanks, source: :project
+  has_many :thanks_projects, through: :thanks, source: :project, dependent: :destroy
   has_many :view_counts, dependent: :destroy
   has_one_attached :profile_image
 
