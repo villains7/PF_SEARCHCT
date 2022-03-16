@@ -1,6 +1,10 @@
 class Public::SearchesController < ApplicationController
   def index
     @projects = Project.all
+    # if (params[:tag_id]).present?
+    #   @tag = Tag.find(params[:tag_id])
+    #   @projects = @tag.projects.all
+    # end
   end
 
   def search

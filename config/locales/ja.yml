@@ -15,3 +15,10 @@ ja:
       insurance:
         yes: "保険あり"
         no: "保険なし"
+  date:
+    format:
+      default: "%Y/%m/%d"
+    order:
+      - :year
+      - :month
+      - :day

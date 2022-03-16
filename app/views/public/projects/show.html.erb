@@ -87,13 +87,15 @@
              <%= image_tag @project.project_image,size: '300x400',class:"shadow"; %>
           </div>
         </div>
-      <div class= "card-text ml-3 mb-3">
-        <%= @project.created_at.strftime('%Y年%m月')%>
+      <div class= "card-text ml-3 mt-3">
         <% if @project.tags.present? %>
           <% @project.tags.each do |tag| %>
-           <p class ="btn btn-dark"><%= tag.name %></p>
+           <p class ="btn tag_btn"><%= link_to tag.name,search_path(tag_id: tag.id) %></p>
           <% end %>
         <% end %>
+      </div>
+      <div class= "card-text ml-3">
+        投稿日：<%= @project.created_at.strftime('%Y年%m月')%>
         投稿者：<%= @project.member.last_name %><%= @project.member.first_name %>
         <%= link_to member_path(@member) do%>
         <i class="fas fa-user"></i>
