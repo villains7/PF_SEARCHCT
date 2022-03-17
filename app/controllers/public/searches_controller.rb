@@ -2,10 +2,10 @@ class Public::SearchesController < ApplicationController
   before_action :authenticate_member!
   def index
     @projects = Project.all
-    # if (params[:tag_id]).present?
-    #   @tag = Tag.find(params[:tag_id])
-    #   @projects = @tag.projects.all
-    # end
+    if (params[:tag_id]).present?
+      @tag = Tag.find(params[:tag_id])
+      @projects = @tag.projects.all
+    end
   end
 
   def search

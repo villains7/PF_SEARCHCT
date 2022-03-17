@@ -2,9 +2,13 @@
  <tbody>
   <% project.comments.each do |comment| %>
   <tr>
-  <li><%= comment.member.last_name %><%= comment.member.first_name %>さんからのコメント:<%= comment.comment %></li>
- </ul>
- <% end %>
+   <td><%= comment.member.last_name %><%= comment.member.first_name %>さんからのコメント:<%= comment.comment %></td>
+   <td>
+    <% if comment.member == current_member %>
+     <%= link_to "削除",project_comments_path(project, comment), method: :delete,class: "btn", remote: true %>
+    <% end %>
+   </td>
+  <% end %>
   </tr>
  </tbody>
 </table>

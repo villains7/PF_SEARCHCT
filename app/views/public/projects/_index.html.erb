@@ -9,7 +9,7 @@
       </tr>
     </thead>
     <tbody>
-         <% project.each do |project| %>
+        <% project.each do |project| %>
       <tr>
         <td><%= project.view_counts.count %></td>
         <td scope= "col" class="text-nowrap"><%= link_to project.title, project, class: "project_#{project.id}"%></td>

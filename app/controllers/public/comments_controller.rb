@@ -7,6 +7,11 @@ class Public::CommentsController < ApplicationController
     # app/views/comments/create.js.erbを参照する
   end
 
+  def destroy
+    @comment = Comment.find_by(id: params[:id], project_id: params[:project_id])
+    @comment.destroy
+  end
+
   private
 
   def comment_params
