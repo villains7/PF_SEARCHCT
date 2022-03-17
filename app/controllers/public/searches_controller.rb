@@ -3,8 +3,9 @@ class Public::SearchesController < ApplicationController
   def index
     @projects = Project.all
     if (params[:tag_id]).present?
-      @tag = Tag.find(params[:tag_id])
-      @projects = @tag.projects.all
+      @projects = Project.includes(:tag_maps)
+      tag = Tag.find(params[:tag_id])
+      @projects = @projects.where(tag_maps: { tag_id: tag })
     end
   end
 

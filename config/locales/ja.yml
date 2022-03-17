@@ -13,8 +13,8 @@ ja:
         sl: "再リース"
         smj: "再メンテナンス受託"
       insurance:
-        yes: "保険あり"
-        no: "保険なし"
+        one: "保険あり"
+        nothing: "保険なし"
   date:
     format:
       default: "%Y/%m/%d"
