@@ -1,6 +1,10 @@
-<% project.comments.each do |comment| %>
- <ul>
-  <li><%= comment.member.last_name %><%= comment.member.first_name %>さんからのコメント:
-  <%= comment.comment %></li>
+<table>
+ <tbody>
+  <% project.comments.each do |comment| %>
+  <tr>
+  <li><%= comment.member.last_name %><%= comment.member.first_name %>さんからのコメント:<%= comment.comment %></li>
  </ul>
  <% end %>
+  </tr>
+ </tbody>
+</table>
