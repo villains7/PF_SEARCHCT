@@ -1,93 +1,94 @@
 <%= form_with url: result_path, method: :get, local: true do |f| %>
   <div class= "form-group d-md-flex">
     <div class="form mr-3">
+      <%= f.label :keyword,"キーワード" %>
       <% if keyword.present?%>
         <!--検索結果に表示-->
-        <%= f.label :keyword,"キーワード" %>
         <%= f.text_field :keyword ,value: keyword,placeholder: "キーワードを入力"%>
       <% else %>
         <!--検索画面遷移時に表示-->
-        <%= f.label :keyword,"キーワード" %>
         <%= f.text_field :keyword ,placeholder: "キーワードを入力"%>
       <% end %>
     </div>
     <div class="form">
+      <%= f.label :salesman,"担当営業名"%>
       <% if salesman.present? %>
         <!--検索結果に表示-->
-        <%= f.label :salesman,"担当営業名"%>
         <%= f.text_field :salesman ,value: salesman,placeholder: "担当営業名を入力"%>
       <% else %>
         <!--検索画面遷移時に表示-->
-        <%= f.label :salesman,"担当営業名"%>
         <%= f.text_field :salesman ,placeholder: "担当営業名を入力"%>
       <% end %>
     </div>
   </div>
   <div class="form-group">
+    <%= f.label :region,"地域を選択"%>
     <% if region.present? %>
-    <!--検索結果に表示-->
-      <%= f.label :region,"地域を選択"%>
+      <!--検索結果に表示-->
       <%= f.select :region, Member::REGION, selected: region, include_blank: "地域"%>
     <% else %>
     <!--検索画面遷移時に表示-->
-      <%= f.label :region,"地域を選択"%>
       <%= f.select :region, Member::REGION,include_blank: "地域"%>
     <% end %>
   </div>
   <div class="form-group">
+    <%= f.label :date,"投稿年月を選択"%>
     <% if date.present? %>
-      <%= f.label :date,"投稿年月を選択"%>
       <!--検索結果に表示-->
       <!--終わりの年を設定しないと、続けて検索をする際に表示年数が少なくなってしまうからend_year設定。-->
       <%= f.date_select :date,start_year: 2013,end_year: 2027,use_month_numbers: true,discard_day: true,include_blank: true,selected: date%>
     <% else %>
       <!--検索画面遷移時に表示-->
-      <%= f.label :date,"投稿年月を選択"%>
       <%= f.date_select :date,start_year: 2013,end_year: 2027,use_month_numbers: true,discard_day: true,include_blank: true%>
     <% end %>
   </div>
   <div class="form-group">
+    <%= f.label :registration_number,"登録番号"%>
     <% if registration_number.present? %>
-      <%= f.label :registration_number,"登録番号"%>
+      <!--検索結果に表示-->
       <%= f.text_field :registration_number,value: registration_number,placeholder: "ex羽星 130 い 0000"%>
     <% else %>
-      <%= f.label :registration_number,"登録番号"%>
+      <!--検索画面遷移時に表示-->
       <%= f.text_field :registration_number,placeholder: "ex羽星 130 い 0000"%>
     <% end %>
   </div>
   <div class="form-group">
+    <%= f.label :body_number,"車体番号"%>
     <% if body_number.present? %>
-      <%= f.label :body_number,"車体番号"%>
+      <!--検索結果に表示-->
       <%= f.text_field :body_number,value: body_number,placeholder: "FRF90-0000000"%>
     <% else %>
-      <%= f.label :body_number,"車体番号"%>
+      <!--検索画面遷移時に表示-->
       <%= f.text_field :body_number,placeholder: "FRF90-0000000"%>
     <% end %>
   </div>
   <div class="form-group">
+    <%= f.label :vehicle_type,"車種を選択"%>
     <% if vehicle_type.present? %>
-      <%= f.label :vehicle_type,"車種を選択"%>
+      <!--検索結果に表示-->
       <%= f.select :vehicle_type,Project.vehicle_types_i18n.invert,selected: vehicle_type, include_blank: "車種" %>
     <% else %>
-      <%= f.label :vehicle_type,"車種を選択"%>
+      <!--検索画面遷移時に表示-->
       <%= f.select :vehicle_type,Project.vehicle_types_i18n.invert, include_blank: "車種"%>
     <% end %>
   </div>
   <div class="form-group">
+    <%= f.label :lease_type,"リース種別を選択"%>
     <% if lease_type.present? %>
-      <%= f.label :lease_type,"リース種別を選択"%>
+      <!--検索結果に表示-->
       <%= f.select :lease_type,Project.lease_types_i18n.invert,selected: lease_type, include_blank: "リース種別"%>
     <% else %>
-      <%= f.label :lease_type,"リース種別を選択"%>
+      <!--検索画面遷移時に表示-->
       <%= f.select :lease_type,Project.lease_types_i18n.invert,include_blank: "リース種別"%>
     <% end %>
   </div>
   <div class="form-group">
+    <%= f.label :body_shop,"整備工場"%>
     <% if body_shop.present? %>
-      <%= f.label :body_shop,"整備工場"%>
+      <!--検索結果に表示-->
       <%= f.text_field :body_shop,value: body_shop,placeholder: "湾岸整備工場" %>
     <% else %>
-      <%= f.label :body_shop,"整備工場"%>
+      <!--検索画面遷移時に表示-->
       <%= f.text_field :body_shopv,placeholder: "湾岸整備工場"  %>
     <% end %>
   </div>
@@ -98,6 +99,7 @@
     <%= f.label :insurance,Project.insurances_i18n[:nothing] %> <!--保険なし-->
   </div>
   <div class="form-group">
+
     <label>リース終了日</label>
     <%= f.select :end_year,*[2022..2032],autofocus: true,include_blank:true %>年<%= f.select :end_month, *[1..12],autofocus: true,include_blank:true %>月<%= f.select :end_day, *[1..31],autofocus: true,include_blank:true  %>日
   </div>

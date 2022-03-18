@@ -39,11 +39,12 @@ class Public::SearchesController < ApplicationController
 
     # 年、月どちらか一方では検索できないようにする。
     if year.present? && month == ""
-      flash[:alert] = "月を入力してください"
+      flash[:alert] = "投稿月を入力してください"
       return
     end
+
     if year == "" && month .present?
-      flash[:alert] = "年を入力してください"
+      flash[:alert] = "投稿年を入力してください"
       return
     end
 
@@ -104,6 +105,38 @@ class Public::SearchesController < ApplicationController
     if @end_day.present?
       @result = @result.where(end_day: @end_day)
     end
+    # どれか一つのフォーム入力だけでは検索できないようにする。
+    if @end_year.present? && @end_month == "" && @end_day == ""
+      flash[:alert] = "月日を入力してください"
+      return
+    end
+
+    if @end_year.present? && @end_month.present? && @end_day == ""
+      flash[:alert] = "日を入力してください"
+      return
+    end
+
+    if @end_year.present? && @end_month == "" && @end_day.present?
+      flash[:alert] = "月を入力してください"
+      return
+    end
+
+    if @end_year == "" && @end_month.present? && @end_day.present?
+      flash[:alert] = "年を入力してください"
+      return
+    end
+
+    if @end_year == "" && @end_month == "" && @end_day.present?
+      flash[:alert] = "年月を入力してください"
+      return
+    end
+
+    if @end_year == "" && @end_month.present? && @end_day == ""
+      flash[:alert] = "年日を入力してください"
+      return
+    end
+
+
 
     # チェックされたタグで検索
     @tag_ids = params[:tag_ids]
