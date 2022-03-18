@@ -36,15 +36,70 @@
   </div>
   <div class="form-group">
     <% if date.present? %>
-      <%= f.label :date,"年月を選択"%>
+      <%= f.label :date,"投稿年月を選択"%>
       <!--検索結果に表示-->
       <!--終わりの年を設定しないと、続けて検索をする際に表示年数が少なくなってしまうからend_year設定。-->
       <%= f.date_select :date,start_year: 2013,end_year: 2027,use_month_numbers: true,discard_day: true,include_blank: true,selected: date%>
     <% else %>
       <!--検索画面遷移時に表示-->
-      <%= f.label :date,"年月を選択"%>
+      <%= f.label :date,"投稿年月を選択"%>
       <%= f.date_select :date,start_year: 2013,end_year: 2027,use_month_numbers: true,discard_day: true,include_blank: true%>
     <% end %>
+  </div>
+  <div class="form-group">
+    <% if registration_number.present? %>
+      <%= f.label :registration_number,"登録番号"%>
+      <%= f.text_field :registration_number,value: registration_number,placeholder: "ex羽星 130 い 0000"%>
+    <% else %>
+      <%= f.label :registration_number,"登録番号"%>
+      <%= f.text_field :registration_number,placeholder: "ex羽星 130 い 0000"%>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <% if body_number.present? %>
+      <%= f.label :body_number,"車体番号"%>
+      <%= f.text_field :body_number,value: body_number,placeholder: "FRF90-0000000"%>
+    <% else %>
+      <%= f.label :body_number,"車体番号"%>
+      <%= f.text_field :body_number,placeholder: "FRF90-0000000"%>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <% if vehicle_type.present? %>
+      <%= f.label :vehicle_type,"車種を選択"%>
+      <%= f.select :vehicle_type,Project.vehicle_types_i18n.invert,selected: vehicle_type, include_blank: "車種" %>
+    <% else %>
+      <%= f.label :vehicle_type,"車種を選択"%>
+      <%= f.select :vehicle_type,Project.vehicle_types_i18n.invert, include_blank: "車種"%>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <% if lease_type.present? %>
+      <%= f.label :lease_type,"リース種別を選択"%>
+      <%= f.select :lease_type,Project.lease_types_i18n.invert,selected: lease_type, include_blank: "リース種別"%>
+    <% else %>
+      <%= f.label :lease_type,"リース種別を選択"%>
+      <%= f.select :lease_type,Project.lease_types_i18n.invert,include_blank: "リース種別"%>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <% if body_shop.present? %>
+      <%= f.label :body_shop,"整備工場"%>
+      <%= f.text_field :body_shop %>
+    <% else %>
+      <%= f.label :body_shop,"整備工場"%>
+      <%= f.text_field :body_shop %>
+    <% end %>
+  </div>
+  <div class="form-group">
+    <%= f.radio_button :insurance ,:yes%>
+    <%= f.label :insurance, "保険あり" %>
+    <%= f.radio_button :insurance ,:no%>
+    <%= f.label :insurance, "保険なし" %>
+  </div>
+  <div class="form-group">
+    <label>リース終了日</label>
+    <%= f.select :end_year,*[2022..2032],autofocus: true,include_blank:true %>年<%= f.select :end_month, *[1..12],autofocus: true,include_blank:true %>月<%= f.select :end_day, *[1..31],autofocus: true,include_blank:true  %>日
   </div>
     <% if tag_ids.present? %>
       <!--検索結果に表示-->

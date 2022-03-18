@@ -16,7 +16,7 @@ class Project < ApplicationRecord
   # リース種別
   enum lease_type: { fl:0, ml:1, mj:2, sl:3, smj:4}
   # 保険の有無
-  enum insurance: { yes:0, no: 1}
+  enum insurance: { one:0, nothing:1 }
 
   def thanked_by?(member)
     thanks.exists?(member_id: member.id)
