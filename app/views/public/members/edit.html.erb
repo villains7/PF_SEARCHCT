@@ -5,17 +5,20 @@
         <div class= "row">
           <div class="col-3">
              <%= form_with model: @member do |f| %>
-              <%= image_tag @member.get_profile_image(30,30),class:"img-fluid rounded-circle";%>
-              <%= f.file_field :profile_image,accept: "image/*" %>
+              <%= image_tag @member.get_profile_image(30,30),class:"img-fluid rounded-circle shadow";%>
           </div>
           <div class= "col-9">
             <label>名前</label>
               <p class= "card-text">
-                <%= f.text_field :last_name, autofocus: true %><%= f.text_field :first_name,autofocus: true %>
+                <%= f.text_field :last_name, autofocus: true %><%= f.text_field :first_name,autofocus: true%>
               </p>
             <label>メールアドレス</label>
               <p class= "card-text">
-                <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+                <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "w-50" %>
+              </p>
+            <label>プロフィール画像</label>
+              <p class= "card-text">
+                <%= f.file_field :profile_image,accept: "image/*"%>
               </p>
             <label>所属</label>
               <p class= "card-text">
@@ -27,7 +30,7 @@
               </p>
             <label>略歴</label>
               <p class= "card-text">
-                <%= f.text_area :carrer,rows: '5', autofocus: true, placeholder: "今まで担当した部署を記載してください ex) 2019年〜2021年 本社業務部",class: "w-75" %>
+                <%= f.text_area :carrer,rows: '5', autofocus: true, placeholder: "今まで担当した部署を記載してください ex) 2019年〜2021年 本社業務部",class: "w-50" %>
               </p>
               <div class="actions">
                 <%= f.submit "更新",url: member_path(@member),mathod: :patch,class: "btn  w-25 update_btn" %>

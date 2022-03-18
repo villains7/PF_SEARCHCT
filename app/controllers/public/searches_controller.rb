@@ -14,7 +14,7 @@ class Public::SearchesController < ApplicationController
   def search
     @result = Project.includes(:tag_maps)
 
-    # 入力されたキーワードで検索
+    # 入力されたキーワード（タイトルか備考）で検索
     @keyword = params[:keyword]
     if @keyword.present?
       @result = @result.where("title like ? OR caption like ?", "%#{@keyword}%", "%#{@keyword}%")
@@ -26,6 +26,11 @@ class Public::SearchesController < ApplicationController
       @result = @result.where("salesman like ? ", "%#{@salesman}%")
     end
 
+    # 顧客名で検索
+    @customer = params[:customer]
+    if @customer.present?
+      @result = @result.where("customer like ? ", "%#{@customer}%")
+    end
     # 選択された地域
     @region = params[:region]
     if @region.present?
@@ -94,6 +99,7 @@ class Public::SearchesController < ApplicationController
     @end_year = params[:end_year]
     @end_month = params[:end_month]
     @end_day = params[:end_day]
+
     if @end_year.present?
       @result = @result.where(end_year: @end_year)
     end
@@ -105,36 +111,7 @@ class Public::SearchesController < ApplicationController
     if @end_day.present?
       @result = @result.where(end_day: @end_day)
     end
-    # どれか一つのフォーム入力だけでは検索できないようにする。
-    if @end_year.present? && @end_month == "" && @end_day == ""
-      flash[:alert] = "月日を入力してください"
-      return
-    end
 
-    if @end_year.present? && @end_month.present? && @end_day == ""
-      flash[:alert] = "日を入力してください"
-      return
-    end
-
-    if @end_year.present? && @end_month == "" && @end_day.present?
-      flash[:alert] = "月を入力してください"
-      return
-    end
-
-    if @end_year == "" && @end_month.present? && @end_day.present?
-      flash[:alert] = "年を入力してください"
-      return
-    end
-
-    if @end_year == "" && @end_month == "" && @end_day.present?
-      flash[:alert] = "年月を入力してください"
-      return
-    end
-
-    if @end_year == "" && @end_month.present? && @end_day == ""
-      flash[:alert] = "年日を入力してください"
-      return
-    end
 
     # チェックされたタグで検索
     @tag_ids = params[:tag_ids]

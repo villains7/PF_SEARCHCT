@@ -15,8 +15,7 @@ import '@fortawesome/fontawesome-free/js/all'
 
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
-import interactionPlugin from '@fullcalendar/interaction';
-import bootstrapPlugin from '@fullcalendar/bootstrap';
+
 
 document.addEventListener('turbolinks:load', function() {
   var calendarEl = document.getElementById("calendar");
@@ -38,7 +37,7 @@ document.addEventListener('turbolinks:load', function() {
     dayCellContent: function(e) {
     e.dayNumberText = e.dayNumberText.replace('日', '');
     },
-    plugins: [ dayGridPlugin, interactionPlugin ,bootstrapPlugin]
+    plugins: [dayGridPlugin]
   });
   calendar.render();
 });
