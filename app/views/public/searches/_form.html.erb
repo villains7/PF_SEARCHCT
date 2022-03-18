@@ -85,17 +85,17 @@
   <div class="form-group">
     <% if body_shop.present? %>
       <%= f.label :body_shop,"整備工場"%>
-      <%= f.text_field :body_shop %>
+      <%= f.text_field :body_shop,value: body_shop,placeholder: "湾岸整備工場" %>
     <% else %>
       <%= f.label :body_shop,"整備工場"%>
-      <%= f.text_field :body_shop %>
+      <%= f.text_field :body_shopv,placeholder: "湾岸整備工場"  %>
     <% end %>
   </div>
   <div class="form-group">
-    <%= f.radio_button :insurance ,:yes%>
-    <%= f.label :insurance, "保険あり" %>
-    <%= f.radio_button :insurance ,:no%>
-    <%= f.label :insurance, "保険なし" %>
+    <%= f.radio_button :insurance ,"one"%>
+    <%= f.label :insurance,Project.insurances_i18n[:one] %> <!-- 保険あり-->
+    <%= f.radio_button :insurance ,"nothing"%>
+    <%= f.label :insurance,Project.insurances_i18n[:nothing] %> <!--保険なし-->
   </div>
   <div class="form-group">
     <label>リース終了日</label>

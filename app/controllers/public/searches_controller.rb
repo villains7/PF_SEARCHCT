@@ -1,7 +1,9 @@
 class Public::SearchesController < ApplicationController
   before_action :authenticate_member!
   def index
+    # 詳細検索をクリックした時は案件一覧が表示される。
     @projects = Project.all
+    # 案件詳細ページからタグをクリックした時の処理
     if (params[:tag_id]).present?
       @projects = Project.includes(:tag_maps)
       tag = Tag.find(params[:tag_id])
