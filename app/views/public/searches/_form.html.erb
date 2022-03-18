@@ -99,9 +99,12 @@
     <%= f.label :insurance,Project.insurances_i18n[:nothing] %> <!--保険なし-->
   </div>
   <div class="form-group">
-
     <label>リース終了日</label>
-    <%= f.select :end_year,*[2022..2032],autofocus: true,include_blank:true %>年<%= f.select :end_month, *[1..12],autofocus: true,include_blank:true %>月<%= f.select :end_day, *[1..31],autofocus: true,include_blank:true  %>日
+    <% if end_year.present? && end_month.present? && end_day.present? %>
+      <%= f.select :end_year,*[2022..2032],autofocus: true,include_blank:true,selected: end_year %>年<%= f.select :end_month, *[1..12],autofocus: true,include_blank:true, selected: end_month %>月<%= f.select :end_day, *[1..31],autofocus: true,include_blank:true, selected: end_day %>日
+    <% else %>
+      <%= f.select :end_year,*[2022..2032],autofocus: true,include_blank:true%>年<%= f.select :end_month, *[1..12],autofocus: true,include_blank:true%>月<%= f.select :end_day, *[1..31],autofocus: true,include_blank:true%>日
+    <% end %>
   </div>
     <% if tag_ids.present? %>
       <!--検索結果に表示-->

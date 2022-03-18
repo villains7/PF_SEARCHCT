@@ -136,8 +136,6 @@ class Public::SearchesController < ApplicationController
       return
     end
 
-
-
     # チェックされたタグで検索
     @tag_ids = params[:tag_ids]
     if @tag_ids.count > 1
