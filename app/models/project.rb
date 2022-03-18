@@ -8,8 +8,20 @@ class Project < ApplicationRecord
   has_one_attached :project_image
 
   validates :customer, presence: true
+  validates :title,presence: true
   validates :region, presence: true
   validates :salesman, presence: true
+  validates :start_year, presence: true
+  validates :start_month, presence: true
+  validates :start_day, presence: true
+  validates :end_year, presence: true
+  validates :end_month, presence: true
+  validates :end_day, presence: true
+  validates :vehicle_type, presence: true
+  validates :lease_type, presence: true
+  validates :registration_number, presence: true
+  validates :body_number, presence: true
+  validates :body_shop, presence: true
 
   # 車種
   enum vehicle_type: { eleho:0, fonerd:1, gigu:2, others:3 }

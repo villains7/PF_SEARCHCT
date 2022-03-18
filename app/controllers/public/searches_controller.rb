@@ -1,7 +1,9 @@
 class Public::SearchesController < ApplicationController
   before_action :authenticate_member!
   def index
+    # 詳細検索をクリックした時は案件一覧が表示される。
     @projects = Project.all
+    # 案件詳細ページからタグをクリックした時の処理
     if (params[:tag_id]).present?
       @projects = Project.includes(:tag_maps)
       tag = Tag.find(params[:tag_id])
@@ -12,7 +14,7 @@ class Public::SearchesController < ApplicationController
   def search
     @result = Project.includes(:tag_maps)
 
-    # 入力されたキーワードで検索
+    # 入力されたキーワード（タイトルか備考）で検索
     @keyword = params[:keyword]
     if @keyword.present?
       @result = @result.where("title like ? OR caption like ?", "%#{@keyword}%", "%#{@keyword}%")
@@ -24,6 +26,11 @@ class Public::SearchesController < ApplicationController
       @result = @result.where("salesman like ? ", "%#{@salesman}%")
     end
 
+    # 顧客名で検索
+    @customer = params[:customer]
+    if @customer.present?
+      @result = @result.where("customer like ? ", "%#{@customer}%")
+    end
     # 選択された地域
     @region = params[:region]
     if @region.present?
@@ -37,11 +44,12 @@ class Public::SearchesController < ApplicationController
 
     # 年、月どちらか一方では検索できないようにする。
     if year.present? && month == ""
-      flash[:alert] = "月を入力してください"
+      flash[:alert] = "投稿月を入力してください"
       return
     end
+
     if year == "" && month .present?
-      flash[:alert] = "年を入力してください"
+      flash[:alert] = "投稿年を入力してください"
       return
     end
 
@@ -91,6 +99,7 @@ class Public::SearchesController < ApplicationController
     @end_year = params[:end_year]
     @end_month = params[:end_month]
     @end_day = params[:end_day]
+
     if @end_year.present?
       @result = @result.where(end_year: @end_year)
     end
@@ -102,6 +111,7 @@ class Public::SearchesController < ApplicationController
     if @end_day.present?
       @result = @result.where(end_day: @end_day)
     end
+
 
     # チェックされたタグで検索
     @tag_ids = params[:tag_ids]
