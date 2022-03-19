@@ -43,7 +43,7 @@ ActiveRecord::Schema.define(version: 2022_03_11_052548) do
   create_table "comments", force: :cascade do |t|
     t.integer "member_id", null: false
     t.integer "project_id", null: false
-    t.text "comment", default: "", null: false
+    t.text "comment", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -70,22 +70,22 @@ ActiveRecord::Schema.define(version: 2022_03_11_052548) do
 
   create_table "projects", force: :cascade do |t|
     t.integer "member_id", null: false
-    t.string "title", default: "", null: false
-    t.string "customer", default: "", null: false
-    t.text "caption", default: "", null: false
-    t.string "region", default: "", null: false
-    t.string "start_year", default: "", null: false
-    t.string "start_month", default: "", null: false
-    t.string "start_day", default: "", null: false
-    t.string "end_year", default: "", null: false
-    t.string "end_month", default: "", null: false
-    t.string "end_day", default: "", null: false
-    t.string "salesman", default: "", null: false
+    t.string "title", null: false
+    t.string "customer", null: false
+    t.text "caption", null: false
+    t.string "region", null: false
+    t.string "start_year", null: false
+    t.string "start_month", null: false
+    t.string "start_day", null: false
+    t.string "end_year", null: false
+    t.string "end_month", null: false
+    t.string "end_day", null: false
+    t.string "salesman", null: false
     t.integer "vehicle_type", default: 0, null: false
     t.integer "lease_type", default: 0, null: false
-    t.string "body_shop", default: "", null: false
-    t.string "body_number", default: "", null: false
-    t.string "registration_number", default: "", null: false
+    t.string "body_shop", null: false
+    t.string "body_number", null: false
+    t.string "registration_number", null: false
     t.integer "insurance", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
