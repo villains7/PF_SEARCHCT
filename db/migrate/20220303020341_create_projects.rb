@@ -1,7 +1,7 @@
 class CreateProjects < ActiveRecord::Migration[6.1]
   def change
     create_table :projects do |t|
-      t.integer :member_id,null: false, default: ""
+      t.integer :member_id,null: false
       t.string :title,null: false, default: ""
       t.string :customer,null: false, default: ""
       t.text :caption,null: false, default: ""
