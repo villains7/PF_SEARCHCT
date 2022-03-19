@@ -17,9 +17,11 @@ import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 
 
-document.addEventListener('turbolinks:load', function() {
-  var calendarEl = document.getElementById("calendar");
-  var calendar = new Calendar(calendarEl, {
+document.addEventListener('DOMContentLoaded', function() {
+  let calendarEl = document.getElementById("calendar");
+  let calendar = new Calendar(calendarEl, {
+    plugins: [dayGridPlugin],
+
     locale: 'ja',
     height: 'auto',
     fixedWeekCount: false,
@@ -37,7 +39,6 @@ document.addEventListener('turbolinks:load', function() {
     dayCellContent: function(e) {
     e.dayNumberText = e.dayNumberText.replace('日', '');
     },
-    plugins: [dayGridPlugin]
   });
   calendar.render();
 });

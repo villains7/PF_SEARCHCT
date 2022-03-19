@@ -12,7 +12,7 @@ class DeviseCreateMembers < ActiveRecord::Migration[6.1]
       t.string :year,null: false, default: ""
       t.string :month,null: false, default: ""
       t.string :section,null: false, default: ""
-      # t.text :carrer,null: false, default: ""
+      t.text :carrer,null: false
       t.string :word,null: false, default: ""
       t.string :region,null: false, default: ""
 
