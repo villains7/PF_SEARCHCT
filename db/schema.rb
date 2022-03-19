@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2022_03_11_052548) do
     t.string "year", default: "", null: false
     t.string "month", default: "", null: false
     t.string "section", default: "", null: false
-    t.text "carrer", default: "", null: false
     t.string "word", default: "", null: false
     t.string "region", default: "", null: false
     t.string "reset_password_token"
