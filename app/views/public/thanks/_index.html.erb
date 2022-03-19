@@ -1,0 +1,18 @@
+<table class ="table">
+  <thead>
+    <tr>
+      <th>案件名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if thanks_project.present? %>
+      <% thanks_project.each do |project| %>
+    <tr>
+      <td><%= link_to project.title, project, class: "project_#{project.id}" %></td>
+    </tr>
+      <% end %>
+    <% else %>
+      <p>Thanks<i class="fa fa-heart"></i>した記事はありません。</p>
+    <% end %>
+  </tbody>
+</table>

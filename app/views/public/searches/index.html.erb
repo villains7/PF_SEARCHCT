@@ -1,0 +1,16 @@
+<div class= "container">
+  <div class= "card shadow">
+    <div class= "card-body">
+      <div class= "input-group">
+        <h5 class= "card-text mr-3">詳細検索<i class="fa fa-search search_icon"></i></h5>
+         <%= render 'form',keyword: @keyword, salesman: @salesman, customer: @customer, region: @region, date: @date,registration_number: @registration_number,body_number: @body_number,vehicle_type: @vehicle_type,lease_type: @lease_type,body_shop: @body_shop,insurance: @insurance,end_year: @end_year,end_month: @end_month,end_day: @end_day, tag_ids: @tag_ids %>
+      </div>
+    </div>
+  </div>
+  <div class= "card shadow">
+    <div class= "card-body">
+      <h5>案件一覧</h5>
+      <%= render 'index', project: @projects %>
+    </div>
+  </div>
+</div>

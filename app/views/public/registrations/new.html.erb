@@ -1,0 +1,57 @@
+<div class="container">
+  <div class="row">
+    <div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+      <div class="card shadow">
+        <div class="text-center ">
+          <%= image_tag'logo.png',size: '400x400'%>
+        </div>
+        <%= form_with(model: resource, scope: resource_name, url: registration_path(resource_name)) do |f| %>
+        <%= render "public/shared/error_messages", resource: resource %>
+          <div class="form-row justify-content-center">
+            <div class="form-group text-center col-md-4 mb-3">
+              <%= f.text_field :last_name,autofocus: true, autocomplete: "last_name",placeholder: "姓" %>
+            </div>
+            <div class="form-group text-center col-md-4 mb-3">
+              <%= f.text_field :first_name,autofocus: true, autocomplete: "first_name",placeholder: "名" %>
+            </div>
+          </div>
+          <div class="form-group text-center">
+            <%= f.email_field :email, autofocus: true, autocomplete: "email",placeholder: "メールアドレス",class:"w-50"%>
+          </div>
+          <div class="form-group text-center">
+            <%= f.password_field :password, autocomplete: "new-password",placeholder: "パスワード",class:"w-50" %>
+          </div>
+          <div class="form-row justify-content-center">
+            <div class="col-auto mb-3">
+            <%= f.select :region, Member::REGION, include_blank: "地域を選択"%>
+            </div>
+            <div class="col-auto mb-3">
+            <%= f.select :section, Member::SECTION, include_blank: "部署を選択"%>
+            </div>
+          </div>
+          <div class="text-center actions mb-3">
+            <%= f.submit "Sign up",class:"btn w-25 sign_up_btn" %>
+          </div>
+          <% end %>
+          <div class="text-center actions mb-3">
+            <%= render "public/shared/links" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

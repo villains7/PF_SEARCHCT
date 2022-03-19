@@ -1,0 +1,14 @@
+<table>
+ <tbody>
+  <% project.comments.each do |comment| %>
+  <tr>
+   <td><%= comment.member.last_name %><%= comment.member.first_name %>さんからのコメント:<%= comment.comment %></td>
+   <td>
+    <% if comment.member == current_member %>
+     <%= link_to "削除",project_comment_path(project,comment.id), method: :delete, remote: true %>
+    <% end %>
+   </td>
+  <% end %>
+  </tr>
+ </tbody>
+</table>

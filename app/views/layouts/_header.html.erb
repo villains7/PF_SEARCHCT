@@ -1,0 +1,43 @@
+<header class= "mb-3">
+  <nav class="navbar navbar-expand-lg" style ="background-color: #9ec3bc">
+    <div class="container">
+      <% if member_signed_in? %>
+        <a class="navbar-brand" href="/top"><%= image_tag 'logo-head.png', size:"300x150" %></a>
+          <button class= "navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <%= link_to "マイページ",member_path(current_member.id),class: "btn  mx-2 mb-3 " %>
+                  </li>
+                  <li class="nev-item">
+                    <%= link_to "案件登録",new_project_path,class: "btn mx-2 mb-3" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "詳細検索",search_path,class: "btn mx-2 mb-3" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "ログアウト",destroy_member_session_path,method: :delete,class: "btn mx-2 mb-3" %>
+                  </li>
+              </ul>
+            </div>
+      <% else %>
+         <a class="navbar-brand" href="/"><%= image_tag 'logo-head.png', size:"300x150" %></a>
+          <button class= "navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <%= link_to "新規登録",new_member_registration_path,class: "btn mx-2 mb-3" %>
+                  </li>
+                  <li class="nav-item">
+                    <%= link_to "ログイン",new_member_session_path,class: "btn mx-2 mb-3"%>
+                  </li>
+                <% end %>
+              </ul>
+            </div>
+    </div>
+   </nav>
+</header>

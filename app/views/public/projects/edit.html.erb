@@ -1,0 +1,113 @@
+<div class= "container">
+  <div class= "card shadow">
+    <div class= "card-body">
+      <h4 class= "mt-3 ml-3 mb-5">案件編集</h4>
+        <%= form_with model: @project do |f| %>
+        <div class= "form-group row">
+          <label class="col-sm-2">タイトル</label>
+          <div class="col-sm-10">
+          <%= f.text_field :title,autofocus: true,class: "w-50"%>
+          </div>
+        </div>
+        <div class= "form-group row">
+          <label class="col-sm-2">顧客名</label>
+          <div class="col-sm-10">
+          <%= f.text_field :customer,autofocus: true,class: "w-50"%>
+          </div>
+        </div>
+        <div class= "form-group row">
+          <label class="col-sm-2"></label>
+          <p class= "ml-3 mr-3">地域：<%= f.select :region,Member::REGION,autofocus: true %></p>
+          <p>担当営業：<%= f.text_field :salesman,autofocus: true%></p>
+        </div>
+         <div class= "form-group row">
+          <label class="col-sm-2">リース開始日</label>
+          <div class="col-sm-10">
+            <%= f.select :start_year,*[2013..2022],autofocus: true %>年<%= f.select :start_month, *[1..12],autofocus: true %>月<%= f.select :start_day, *[1..31],autofocus: true %>日
+          </div>
+        </div>
+        <div class= "form-group row">
+          <label class="col-sm-2">リース終了日</label>
+          <div class="col-sm-10">
+            <%= f.select :end_year,*[2022..2032],autofocus: true %>年<%= f.select :end_month, *[1..12],autofocus: true %>月<%= f.select :end_day, *[1..31],autofocus: true %>日
+          </div>
+        </div>
+         <div class= "form-group row">
+          <label class="col-sm-2">登録番号</label>
+          <div class="col-sm-10">
+            <%= f.text_field :registration_number,placeholder: "ex羽星 130 い 0000",class: "w-50" %>
+          </div>
+        </div>
+        <div class= "form-group row">
+          <label class="col-sm-2">車体番号</label>
+          <div class="col-sm-10">
+            <%= f.text_field :body_number,placeholder: "FRF90-0000000",class: "w-50"%>
+          </div>
+        </div>
+        <div class= "form-group row">
+          <label class="col-sm-2">車種</label>
+          <div class="col-sm-10">
+          <%= f.select :vehicle_type,Project.vehicle_types_i18n.invert%>
+          </div>
+        </div>
+        <div class= "form-group row">
+          <label class="col-sm-2">リース種別</label>
+          <div class="col-sm-10">
+          <%= f.select :lease_type,Project.lease_types_i18n.invert %>
+          </div>
+        </div>
+         <div class= "form-group row">
+          <label class="col-sm-2"></label>
+          <div class="col-sm-10">
+            <%= f.radio_button :insurance ,"one",:checked => true %>
+            <%= f.label :insurance, Project.insurances_i18n[:one]%>
+            <%= f.radio_button :insurance ,"nothing"%>
+            <%= f.label :insurance,  Project.insurances_i18n[:nothing]%>
+          </div>
+        </div>
+        <div class= "form-group row">
+          <label class="col-sm-2">整備工場</label>
+          <div class="col-sm-10">
+          <%= f.text_field :body_shop,class: "w-50" %>
+          </div>
+        </div>
+        <div class= "form-group row">
+          <label class="col-sm-2">備考欄</label>
+          <div class="col-sm-10">
+          <%= f.text_area :caption,rows: '5',placeholder: "備考はこちら",class: "w-50" %>
+          </div>
+        </div>
+        <div class= "form-group row">
+          <label class="col-sm-2">タグ</label>
+          <div class="col-sm-10">
+            <!--引数の順番によって役割が変わる。-->
+            <%= f.collection_check_boxes(:tag_ids, Tag.all, :id, :name) do |tag| %>
+                <%= tag.label do %>
+                  <%= tag.check_box %>
+                  <%= tag.text%>
+                <% end %>
+              <% end %>
+          </div>
+        </div>
+        <div class= "form-group row">
+          <label class="col-sm-2">参考資料</label>
+          <div class="col-sm-10">
+          <%= image_tag @project.project_image,size: '300x400' %>
+          </div>
+        </div>
+        <div class= "form-group row">
+          <label class="col-sm-2"></label>
+          <div class="col-sm-10">
+          <%= f.file_field :project_images,accept: "image/*", multiple: true %>
+          </div>
+        </div>
+        <div class= "form-group row">
+          <label class="col-sm-2"></label>
+          <div class="col-sm-10">
+          <%= f.submit "変更を保存",url: projects_path(@project),method: :patch,class: "btn w-75 update_btn" %>
+          </div>
+        </div>
+        <% end %>
+    </div>
+  </div>
+</div>

@@ -7,6 +7,40 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "jquery";
+import "popper.js";
+import "bootstrap";
+import "../stylesheets/application"
+import '@fortawesome/fontawesome-free/js/all'
+
+import { Calendar } from '@fullcalendar/core';
+import dayGridPlugin from '@fullcalendar/daygrid';
+
+
+document.addEventListener('turbolinks:load', function() {
+  var calendarEl = document.getElementById("calendar");
+  var calendar = new Calendar(calendarEl, {
+    locale: 'ja',
+    height: 'auto',
+    fixedWeekCount: false,
+    buttonText: {
+      today: '今日'
+    },
+    events :[
+      {
+        start:'2022-03-18',
+        end:'2022-03-18',
+        title: '口座振替締日',
+        display: 'background'
+      }
+    ],
+    dayCellContent: function(e) {
+    e.dayNumberText = e.dayNumberText.replace('日', '');
+    },
+    plugins: [dayGridPlugin]
+  });
+  calendar.render();
+});
 
 Rails.start()
 Turbolinks.start()

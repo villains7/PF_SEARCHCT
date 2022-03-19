@@ -1,0 +1,24 @@
+ja:
+  enums:
+    project:
+      vehicle_type:
+        eleho: "エルホ"
+        fonerd: "フォナード"
+        gigu: "ギグ"
+        others: "その他"
+      lease_type:
+        fl: "ファイナンスリース"
+        ml: "メンテナンスリース"
+        mj: "メンテナンス受託"
+        sl: "再リース"
+        smj: "再メンテナンス受託"
+      insurance:
+        one: "保険あり"
+        nothing: "保険なし"
+  date:
+    format:
+      default: "%Y/%m/%d"
+    order:
+      - :year
+      - :month
+      - :day

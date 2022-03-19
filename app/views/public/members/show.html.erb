@@ -1,0 +1,54 @@
+<div class= "container">
+  <div class= "row">
+    <div class= "card shadow col-12 col-lg-8">
+      <div class= "card-body m-3">
+      <h3>マイページ</h3>
+        <div class= "row">
+          <div class="col-3">
+            <%= image_tag @member.get_profile_image(30,30),class:"img-fluid rounded-circle shadow";%>
+          </div>
+          <div class= "col-9">
+            <p class= "card-text" style="border-bottom: solid 1px">
+              名前:  <%= @member.last_name %><%= @member.first_name %>
+            </p>
+            <p class= "card-text" style="border-bottom: solid 1px">
+              所属地域:  <%= @member.region %>
+            </p>
+            <p class= "card-text" style="border-bottom: solid 1px">
+              所属部署:  <%= @member.section %>
+            </p>
+            <p class= "card-text">
+              <% if @member.year == "" %>
+                <p style="border-bottom: solid 1px">編集ページで入社年月日を入力してください</p>
+              <% else %>
+                <p class="text" style="border-bottom: solid 1px">入社年月:  <%= @member.year %>年<%= @member.month %>月</p>
+              <% end %>
+            </p>
+            <p class= "card-text">
+              <% if @member.carrer == "" %>
+                <p style="border-bottom: solid 1px">編集ページで経歴を入力してください</p>
+              <% else %>
+                <p style="border-bottom: solid 1px">略歴: <%= @member.carrer %></p>
+              <% end %>
+            </p>
+            <p class= "card-text">
+              <% if @member == current_member %>
+                <%= link_to 'ユーザー情報を編集する',edit_member_path(@member),class: "btn w-50 edit_btn"%>
+              <% end %>
+            </p>
+            <h5>投稿した案件</h5>
+              <%= render 'project_index',projects: @projects,member: @member %>
+              <% if @member == current_member %>
+              <h5>Thanks<i class="fa fa-heart"></i>した記事一覧</h5>
+                <%= render 'public/thanks/index',thanks_project: @thanks_projects %>
+              <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class= "col-12 col-lg-4">
+      <%= render 'public/events/index' %>
+    </div>
+    </div>
+  </div>
+</div>
