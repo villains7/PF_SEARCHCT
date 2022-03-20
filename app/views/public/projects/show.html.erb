@@ -27,13 +27,13 @@
           </div>
         </div>
         <div class= "row ml-3">
-          <label class="col-sm-2">リース開始日</label>
+          <label class="col-sm-2">開始日</label>
           <div class="col-sm-10">
           <%= @project.start_year %>年<%= @project.start_month %>月<%= @project.start_day %>日
           </div>
         </div>
         <div class= "row ml-3">
-          <label class="col-sm-2">リース終了日</label>
+          <label class="col-sm-2">終了日</label>
           <div class="col-sm-10">
           <%= @project.end_year %>年<%= @project.end_month %>月<%= @project.end_day %>日
           </div>
@@ -115,6 +115,7 @@
       </div>
     </div>
     <div class= "col-12 col-lg-4">
+      <%= javascript_pack_tag 'calendar', 'data-turbolinks-track': 'reload' %>
       <%= render 'public/events/index' %>
     </div>
   </div>

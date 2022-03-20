@@ -6,7 +6,6 @@ document.addEventListener('turbolinks:load', function() {
   let calendarEl = document.getElementById("calendar");
   let calendar = new Calendar(calendarEl, {
     plugins: [dayGridPlugin],
-
     locale: 'ja',
     height: 'auto',
     fixedWeekCount: false,
