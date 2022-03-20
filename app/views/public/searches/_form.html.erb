@@ -105,10 +105,25 @@
     <% end %>
   </div>
   <div class="form-group">
-    <%= f.radio_button :insurance ,"one"%>
-    <%= f.label :insurance,Project.insurances_i18n[:one] %> <!-- 保険あり-->
-    <%= f.radio_button :insurance ,"nothing"%>
-    <%= f.label :insurance,Project.insurances_i18n[:nothing] %> <!--保険なし-->
+    <% if insurance.present? %>
+      <% if insurance == "one" %>
+        <%= f.radio_button :insurance ,"one",:checked => true%>
+        <%= f.label :insurance,Project.insurances_i18n[:one]%> <!-- 保険あり-->
+        <%= f.radio_button :insurance ,"nothing"%>
+        <%= f.label :insurance,Project.insurances_i18n[:nothing] %> <!--保険なし-->
+      <% end %>
+      <% if insurance == "nothing" %>
+        <%= f.radio_button :insurance ,"one"%>
+        <%= f.label :insurance,Project.insurances_i18n[:one]%> <!-- 保険あり-->
+        <%= f.radio_button :insurance ,"nothing",:checked => true%>
+        <%= f.label :insurance,Project.insurances_i18n[:nothing]%> <!--保険なし-->
+      <% end %>
+    <% else %>
+      <%= f.radio_button :insurance ,"one"%>
+        <%= f.label :insurance,Project.insurances_i18n[:one]%> <!-- 保険あり-->
+        <%= f.radio_button :insurance ,"nothing"%>
+        <%= f.label :insurance,Project.insurances_i18n[:nothing]%><!--保険なし-->
+    <% end %>
   </div>
   <div class="form-group">
     <label>リース終了日</label>

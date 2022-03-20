@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get "top" => "projects#index"
     get "search" => "searches#index"
     get "result" => "searches#search"
-    get 'events/index'
+    resources :event,only:[:index]
     resources :members, only: [:update, :show, :edit]
     resources :projects do
       resource :thanks, only: [:create, :destroy]

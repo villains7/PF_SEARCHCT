@@ -8,6 +8,7 @@ class Public::CommentsController < ApplicationController
   end
 
   def destroy
+    @project = Project.find(params[:project_id])
     @comment = Comment.find_by(id: params[:id], project_id: params[:project_id])
     @comment.destroy
   end
