@@ -1,7 +1,6 @@
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 
-
 document.addEventListener('turbolinks:load', function() {
   let calendarEl = document.getElementById("calendar");
   let calendar = new Calendar(calendarEl, {
