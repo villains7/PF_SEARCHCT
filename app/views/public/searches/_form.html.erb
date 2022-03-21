@@ -105,7 +105,9 @@
     <% end %>
   </div>
   <div class="form-group">
+    <!--検索結果に表示-->
     <% if insurance.present? %>
+    <!--保険ありが選択された時-->
       <% if insurance == "one" %>
         <%= f.radio_button :insurance ,"one",:checked => true%>
         <%= f.label :insurance,Project.insurances_i18n[:one]%> <!-- 保険あり-->
@@ -113,16 +115,18 @@
         <%= f.label :insurance,Project.insurances_i18n[:nothing] %> <!--保険なし-->
       <% end %>
       <% if insurance == "nothing" %>
+      <!--保険なしが選択された時-->
         <%= f.radio_button :insurance ,"one"%>
         <%= f.label :insurance,Project.insurances_i18n[:one]%> <!-- 保険あり-->
         <%= f.radio_button :insurance ,"nothing",:checked => true%>
         <%= f.label :insurance,Project.insurances_i18n[:nothing]%> <!--保険なし-->
       <% end %>
     <% else %>
+    <!--検索画面遷移時に表示-->
       <%= f.radio_button :insurance ,"one"%>
-        <%= f.label :insurance,Project.insurances_i18n[:one]%> <!-- 保険あり-->
-        <%= f.radio_button :insurance ,"nothing"%>
-        <%= f.label :insurance,Project.insurances_i18n[:nothing]%><!--保険なし-->
+      <%= f.label :insurance,Project.insurances_i18n[:one]%> <!-- 保険あり-->
+      <%= f.radio_button :insurance ,"nothing"%>
+      <%= f.label :insurance,Project.insurances_i18n[:nothing]%><!--保険なし-->
     <% end %>
   </div>
   <div class="form-group">
