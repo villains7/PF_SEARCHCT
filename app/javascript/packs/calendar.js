@@ -1,6 +1,7 @@
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
 
+
 document.addEventListener('turbolinks:load', function() {
   let calendarEl = document.getElementById("calendar");
   let calendar = new Calendar(calendarEl, {
@@ -11,8 +12,20 @@ document.addEventListener('turbolinks:load', function() {
     buttonText: {
       today: '今日'
     },
-    events :'/events.json',
-    
+    // events: [ , rrulePlugin,import rrulePlugin from '@fullcalendar/rrule';
+    //   {
+    //     title: '口座振替締日',
+    //     allDay: true,
+    //       rrule: {
+    //             freq: 'monthly',
+    //             count: 20,
+    //             bymonthday: [20],
+    //             dtstart: '2022-03-20',
+    //             until: '2022-12-31'
+    //         },
+
+    // }],
+
     dayCellContent: function(e) {
     e.dayNumberText = e.dayNumberText.replace('日', '');
     },
