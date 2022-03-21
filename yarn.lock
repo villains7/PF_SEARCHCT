@@ -957,13 +957,10 @@
     "@fullcalendar/common" "~5.10.1"
     tslib "^2.1.0"
 
-"@fullcalendar/rrule@5.10.1":
-  version "5.10.1"
-  resolved "https://registry.yarnpkg.com/@fullcalendar/rrule/-/rrule-5.10.1.tgz#e0fd3efda6520df8462ae9ee4cce7fa3e711cbb4"
-  integrity sha512-K5TO8298eVkZiJ70hZrAvAAP81aTMiymgPW1nnaOkflI4bvEDJlkGdFe1MqgE07oTBZca7VU7/33ePiSTs0Pcg==
-  dependencies:
-    "@fullcalendar/common" "~5.10.1"
-    tslib "^2.1.0"
+"@fullcalendar/rrule@4.3.0":
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/@fullcalendar/rrule/-/rrule-4.3.0.tgz#669b03efce63287353e541a8a4f6b089f59be27c"
+  integrity sha512-80nPrIW0hA/vtT2VcDzSzk2yQ/bqdJB4zCiVhrGAg3+DtVxnormElTQQg84Iw1q1WeouT9lo2FYzG9B4SIDQEw==
 
 "@gar/promisify@^1.0.1":
   version "1.1.3"
