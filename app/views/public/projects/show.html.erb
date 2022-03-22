@@ -100,15 +100,17 @@
         <%= link_to member_path(@member) do%>
         <i class="fas fa-user"></i>
         <% end %>
-        <% if @project.member == current_member %>
-        <%= link_to "案件の編集",edit_project_path(@project), class: "btn btn-sm edit_project_#{@project.id} edit_btn" %>
-        <% end %>
       </div>
       <div class= "card-text ml-3 mb-3">
         閲覧数：<%= @project.view_counts.count %>
       </div>
       <div class= "card-item ml-3 mb-3">
         <p id="project_<%= @project.id %>"><%= render "public/thanks/btn",project: @project %></p>
+      </div>
+      <div class= "card-item ml-3 mb-3">
+        <% if @project.member == current_member %>
+          <%= link_to "案件の編集",edit_project_path(@project), class: "btn  edit_project_#{@project.id} edit_btn" %>
+        <% end %>
       </div>
       <div id="project_comment_<%= @project.id %>" class= "card-item ml-3 mb-3">
         <%= render "public/comments/index",project: @project %>
@@ -118,6 +120,7 @@
       </div>
     </div>
     <div class= "col-12 col-lg-4">
+      <%= javascript_pack_tag 'calendar', 'data-turbolinks-track': 'reload' %>
       <%= render 'public/events/index' %>
     </div>
   </div>
