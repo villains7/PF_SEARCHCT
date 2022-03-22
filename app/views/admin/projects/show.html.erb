@@ -97,24 +97,12 @@
       <div class= "card-text ml-3">
         投稿日：<%= @project.created_at.strftime('%Y年%m月')%>
         投稿者：<%= @project.member.last_name %><%= @project.member.first_name %>
-        <%= link_to member_path(@member) do%>
-        <i class="fas fa-user"></i>
-        <% end %>
-        <% if @project.member == current_member %>
-        <%= link_to "案件の編集",edit_project_path(@project), class: "btn btn-sm edit_project_#{@project.id} edit_btn" %>
-        <% end %>
       </div>
       <div class= "card-text ml-3 mb-3">
         閲覧数：<%= @project.view_counts.count %>
       </div>
-      <div class= "card-item ml-3 mb-3">
-        <p id="project_<%= @project.id %>"><%= render "public/thanks/btn",project: @project %></p>
-      </div>
-      <div id="project_comment_<%= @project.id %>" class= "card-item ml-3 mb-3">
-        <%= render "public/comments/index",project: @project %>
-      </div>
-       <div class= "card-item ml-3 mb-3 mr-3">
-        <%= render "public/comments/form",project: @project,comment: @comment %>
+      <div class= "card-text ml-3 mb-3">
+        <%= link_to "削除",admin_project_path(@project),method: :delete, class: "btn  danger_btn w-25","data-confirm" => "本当に削除しますか？" %>
       </div>
     </div>
     <div class= "col-12 col-lg-4">

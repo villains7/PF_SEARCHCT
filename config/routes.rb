@@ -1,4 +1,17 @@
 Rails.application.routes.draw do
+
+  # 管理者用
+  # URL /admin/sign_in ...
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+  sessions: "admin/sessions"
+  }
+  namespace :admin do
+    get 'searches/search'
+    get 'top' => 'searches#index'
+    resources :projects,only: [:show, :destroy]
+  end
+
+  # 社員用
   devise_for :members, skip: [:passwords], controllers: {
     registrations: "public/registrations",
     sessions: "public/sessions",
@@ -13,7 +26,7 @@ Rails.application.routes.draw do
     get "result" => "searches#search"
     resources :event,only:[:index]
     resources :members, only: [:update, :show, :edit]
-    resources :projects do
+    resources :projects, only: [:new, :index, :create, :edit, :show, :update] do
       resource :thanks, only: [:create, :destroy]
       resources :comments, only: [:create, :destroy]
     end
