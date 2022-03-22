@@ -17,6 +17,7 @@ class Public::ProjectsController < ApplicationController
     @project.member_id = current_member.id
     if @project.save
       redirect_to project_path(@project)
+      flash[:success] = "案件登録が完了しました。"
     else
       render :new
     end
@@ -40,6 +41,7 @@ class Public::ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.update(project_params)
     redirect_to project_path(@project)
+    flash[:success] = "更新が完了しました。"
   end
 
   private
