@@ -11,6 +11,7 @@ class Public::CommentsController < ApplicationController
     @project = Project.find(params[:project_id])
     @comment = Comment.find_by(id: params[:id], project_id: params[:project_id])
     @comment.destroy
+    # app/views/comments/destroy.js.erbを参照する
   end
 
   private

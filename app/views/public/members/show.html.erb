@@ -25,11 +25,7 @@
               <% end %>
             </p>
             <p class= "card-text">
-              <% if @member.carrer == "" %>
-                <p style="border-bottom: solid 1px">編集ページで経歴を入力してください</p>
-              <% else %>
                 <p style="border-bottom: solid 1px">略歴: <%= @member.carrer %></p>
-              <% end %>
             </p>
             <p class= "card-text">
               <% if @member == current_member %>
