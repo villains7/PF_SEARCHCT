@@ -2,9 +2,9 @@
   <div class= "card shadow">
     <div class= "card-body">
       <h2>情報編集</h2>
+        <%= form_with model: @member,url: member_path(@member),mathod: :patch do |f| %>
         <div class= "row">
           <div class="col-3">
-             <%= form_with model: @member do |f| %>
               <%= image_tag @member.get_profile_image(30,30),class:"img-fluid rounded-circle shadow";%>
           </div>
           <div class= "col-9">
@@ -30,12 +30,14 @@
               </p>
             <label>略歴</label>
               <p class= "card-text">
-                <%= f.text_area :carrer,rows: '5', autofocus: true, placeholder: "今まで担当した部署を記載してください ex) 2019年〜2021年 本社業務部",class: "w-50" %>
+                <%= f.text_area :carrer,rows: '5', placeholder: "今まで担当した部署を記載してください ex) 2019年〜2021年 本社業務部",class: "w-50" %>
               </p>
-              <div class="actions">
-                <%= f.submit "更新",url: member_path(@member),mathod: :patch,class: "btn  w-25 update_btn" %>
-              </div>
-              <% end %>
+            <label>一言</label>
+              <p class= "card-text">
+                <%= f.text_field :word,autofocus: true, placeholder: "ご自由にどうぞ" %>
+              </p>
+                <%= f.submit "更新",class: "btn  w-25 update_btn" %>
+            <% end %>
           </div>
         </div>
     </div>

@@ -3,7 +3,7 @@
     <div class= "card shadow col-12 col-lg-8">
       <h4 class= "mt-3 mb-5 ml-3">案件詳細</h4>
         <div class= "row ml-3">
-          <label class="col-sm-2">タイトル</label>
+          <label class="col-sm-2">案件名</label>
           <div class="col-sm-10">
           <%= @project.title%>
           </div>
@@ -106,7 +106,7 @@
       </div>
     </div>
     <div class= "col-12 col-lg-4">
-      <%= javascript_pack_tag 'calendar', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_pack_tag 'calendar'%>
       <%= render 'public/events/index' %>
     </div>
   </div>

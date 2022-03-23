@@ -28,6 +28,9 @@
                 <p style="border-bottom: solid 1px">略歴: <%= @member.carrer %></p>
             </p>
             <p class= "card-text">
+                <p style="border-bottom: solid 1px">一言: <%= @member.word%></p>
+            </p>
+            <p class= "card-text">
               <% if @member == current_member %>
                 <%= link_to 'ユーザー情報を編集する',edit_member_path(@member),class: "btn w-50 edit_btn"%>
               <% end %>
