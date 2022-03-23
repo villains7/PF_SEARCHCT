@@ -1,26 +1,16 @@
 <%= form_with url: result_path, method: :get, local: true do |f| %>
   <div class= "form-group d-md-flex">
     <div class="form mr-3">
-      <%= f.label :keyword,"キーワード"%>
+      <%= f.label :keyword,"案件名"%>
       <% if keyword.present?%>
         <!--検索結果に表示-->
-        <%= f.text_field :keyword ,value: keyword,placeholder: "キーワードを入力"%>
+        <%= f.text_field :keyword ,value: keyword,placeholder: "案件名or備考欄の文言"%>
       <% else %>
         <!--検索画面遷移時に表示-->
-        <%= f.text_field :keyword ,placeholder: "キーワードを入力"%>
+        <%= f.text_field :keyword ,placeholder: "案件名or備考欄の文言"%>
       <% end %>
     </div>
     <div class="form mr-3">
-      <%= f.label :salesman,"担当営業名"%>
-      <% if salesman.present? %>
-        <!--検索結果に表示-->
-        <%= f.text_field :salesman ,value: salesman,placeholder: "担当営業名を入力"%>
-      <% else %>
-        <!--検索画面遷移時に表示-->
-        <%= f.text_field :salesman ,placeholder: "担当営業名を入力"%>
-      <% end %>
-    </div>
-    <div class="form">
       <%= f.label :customer,"顧客名"%>
       <% if customer.present? %>
         <!--検索結果に表示-->
@@ -28,6 +18,16 @@
       <% else %>
         <!--検索画面遷移時に表示-->
         <%= f.text_field :customer ,placeholder: "顧客名を入力"%>
+      <% end %>
+    </div>
+    <div class="form mr-3">
+      <%= f.label :salesman,"営業名"%>
+      <% if salesman.present? %>
+        <!--検索結果に表示-->
+        <%= f.text_field :salesman ,value: salesman,placeholder: "担当営業名を入力"%>
+      <% else %>
+        <!--検索画面遷移時に表示-->
+        <%= f.text_field :salesman ,placeholder: "担当営業名を入力"%>
       <% end %>
     </div>
   </div>
