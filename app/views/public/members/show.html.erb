@@ -25,7 +25,7 @@
               <% end %>
             </p>
             <p class= "card-text">
-                <p style="border-bottom: solid 1px">略歴: <%= @member.carrer %></p>
+                <p style="border-bottom: solid 1px">略歴: <%= simple_format(h(@member.carrer))  %></p>
             </p>
             <p class= "card-text">
                 <p style="border-bottom: solid 1px">一言: <%= @member.word%></p>

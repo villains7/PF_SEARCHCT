@@ -23,7 +23,7 @@
               </ul>
             </div>
       <% elsif admin_signed_in?%>
-        <%= image_tag 'logo-head.png', size:"300x150" %>
+        <a class="navbar-brand" href="/admin/top"><%= image_tag 'logo-head.png', size:"300x150" %></a>
           <button class= "navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <i class="fas fa-sort-down" style="color: #5928b1"></i>
           </button>

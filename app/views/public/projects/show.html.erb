@@ -85,6 +85,15 @@
           <label class="col-sm-2">添付資料</label>
           <div class="col-sm-10">
              <%= image_tag @project.project_image,size: '300x400',class:"shadow"; %>
+            <!-- <0% @project.project_image.each do |project_image| %>-->
+            <!--  <0% if project_image.sepresentable? %>-->
+            <!--    <0%= image_tag project_image.representation(resize_to_limit: [300, 400]) %>-->
+            <!--  <0% else %>-->
+            <!--    <0%= link_to rails_blob_path(project_image, disposition: "attachment") do %>-->
+            <!--    <0%= image_tag "placeholder.png", alt: "Download file" %>-->
+            <!--    <0% end %>-->
+            <!--  <0% end %>-->
+            <!--<0% end %>-->
           </div>
         </div>
       <div class= "card-text ml-3 mt-3">
