@@ -4,7 +4,7 @@ class Public::SearchesController < ApplicationController
     # 詳細検索をクリックした時は案件一覧が表示される。
     @projects = Project.all
     # 案件詳細ページからタグをクリックした時の処理
-    if (params[:tag_id]).present?
+    if params[:tag_id].present?
       @projects = Project.includes(:tag_maps)
       tag = Tag.find(params[:tag_id])
       @projects = @projects.where(tag_maps: { tag_id: tag })
@@ -111,7 +111,6 @@ class Public::SearchesController < ApplicationController
     if @end_day.present?
       @result = @result.where(end_day: @end_day)
     end
-
 
     # チェックされたタグで検索
     @tag_ids = params[:tag_ids]

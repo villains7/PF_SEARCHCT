@@ -3,6 +3,7 @@ class Admin::ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @member = @project.member_id
   end
+
   def destroy
     @project = Project.find(params[:id])
     @project.destroy
