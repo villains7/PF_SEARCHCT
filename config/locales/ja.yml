@@ -22,3 +22,15 @@ ja:
       - :year
       - :month
       - :day
+  activerecord:
+    models:
+      project: "案件"
+    attributes:
+      project:
+        customer: "顧客名"
+        title: "タイトル"
+        region: "地域"
+        salesman: "担当営業"
+        registration_number: "登録番号"
+        body_number: "車体番号"
+        body_shop: "整備工場"

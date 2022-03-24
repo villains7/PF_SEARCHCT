@@ -14,6 +14,7 @@ class Public::MembersController < ApplicationController
     @member = Member.find(params[:id])
     @member.update(member_params)
     redirect_to member_path(@member)
+    flash[:notice] = "情報を更新しました。"
   end
 
   private

@@ -8,8 +8,18 @@
   color:#583f99;
 }
 
-.flash {
+.flash_success {
   background:#8ac75a;
+  text-align: center;
+}
+
+.flash_notice {
+  background:#84ccce;
+  text-align: center;
+}
+
+.flash_alert {
+  background:#fff100;
   text-align: center;
 }
 

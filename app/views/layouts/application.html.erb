@@ -16,7 +16,7 @@
 
   <body style ="background-color: #caddde">
     <%= render 'layouts/header' %>
-    <p class ="flash"><%= flash[:success] %></p>
+    <%= render 'layouts/notifications' %><br>
     <%= yield %>
   </body>
    <%= render 'layouts/footer' %>

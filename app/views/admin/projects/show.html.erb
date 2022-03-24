@@ -77,8 +77,8 @@
         <div class= "row ml-3">
           <label class="col-sm-2">備考</label>
           <div class="col-sm-10">
-          <!--splitメソッドで文字列を分割。改行コードをhtmlで表示した時に<br>にする-->
-          <%= safe_join(@project.caption.split("\n"),tag(:br)) %>
+            <!--改行を反映させるため、simple_formatを使用。hオプションで<p>等を文字列として認識-->
+            <%= simple_format(h(@project.caption)) %>
           </div>
         </div>
         <div class= "row ml-3">

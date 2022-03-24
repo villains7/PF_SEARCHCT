@@ -41,7 +41,7 @@ class Public::ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     @project.update(project_params)
     redirect_to project_path(@project)
-    flash[:success] = "更新が完了しました。"
+    flash[:notice] = "更新が完了しました。"
   end
 
   private
