@@ -60,6 +60,7 @@ gem 'dotenv-rails'
 gem 'devise'
 gem "enum_help"
 gem 'rails-i18n'
+gem 'whenever', require: false
 
 group :production do
   gem 'mysql2'

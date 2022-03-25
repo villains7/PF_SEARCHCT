@@ -15,6 +15,9 @@ ja:
       insurance:
         one: "保険あり"
         nothing: "保険なし"
+      status:
+        draft: "下書き"
+        published: "公開"
   date:
     format:
       default: "%Y/%m/%d"
