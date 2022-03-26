@@ -1,13 +1,7 @@
 class Admin::SearchesController < ApplicationController
   def index
-    # 詳細検索をクリックした時は案件一覧が表示される。
+    # 管理者トップページに案件一覧を表示。
     @projects = Project.all
-    # 案件詳細ページからタグをクリックした時の処理
-    if params[:tag_id].present?
-      @projects = Project.includes(:tag_maps)
-      tag = Tag.find(params[:tag_id])
-      @projects = @projects.where(tag_maps: { tag_id: tag })
-    end
   end
 
   def search
@@ -111,10 +105,10 @@ class Admin::SearchesController < ApplicationController
       @result = @result.where(end_day: @end_day)
     end
 
-    # チェックされたタグで検索
-    # @tag_ids = params[:tag_ids]
-    # if @tag_ids.count > 1
-    #   @result = @result.where(tag_maps: { tag_id: @tag_ids })
-    # end
+    チェックされたタグで検索
+    @tag_ids = params[:tag_ids]
+    if @tag_ids.count > 1
+      @result = @result.where(tag_maps: { tag_id: @tag_ids })
+    end
   end
 end
