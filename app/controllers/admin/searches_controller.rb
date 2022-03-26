@@ -105,7 +105,7 @@ class Admin::SearchesController < ApplicationController
       @result = @result.where(end_day: @end_day)
     end
 
-    チェックされたタグで検索
+    # チェックされたタグで検索
     @tag_ids = params[:tag_ids]
     if @tag_ids.count > 1
       @result = @result.where(tag_maps: { tag_id: @tag_ids })

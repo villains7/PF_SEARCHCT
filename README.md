@@ -45,4 +45,4 @@ https://docs.google.com/spreadsheets/d/1Kl_0o-IP-Us3cmI4jw7PUjn-a2bRgNkDeF62Huo2
 
 - ロゴ　designevo https://www.designevo.com/
 - 画像　O-DAN https://o-dan.net/ja/
--       イラストAC https://www.ac-illust.com/
+- イラストAC  https://www.ac-illust.com/
