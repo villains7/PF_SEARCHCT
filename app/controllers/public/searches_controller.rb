@@ -38,6 +38,7 @@ class Public::SearchesController < ApplicationController
     end
 
     # date_selectで選択された日付
+    # 投稿日で検索
     year = params['date(1i)']
     month = params['date(2i)']
     day = params['date(3i)']
@@ -114,6 +115,7 @@ class Public::SearchesController < ApplicationController
 
     # チェックされたタグで検索
     @tag_ids = params[:tag_ids]
+    # 複数のタグがチェックされた場合は以下の処理を実行
     if @tag_ids.count > 1
       @result = @result.where(tag_maps: { tag_id: @tag_ids })
     end
