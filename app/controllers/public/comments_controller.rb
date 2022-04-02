@@ -3,6 +3,7 @@ class Public::CommentsController < ApplicationController
     @project = Project.find(params[:project_id])
     @comment = current_member.comments.new(comment_params)
     @comment.project_id = @project.id
+    @comment.score = Language.get_data(comment_params[:comment])
     @comment.save
     # app/views/comments/create.js.erbを参照する
   end
