@@ -35,7 +35,7 @@ https://docs.google.com/spreadsheets/d/1Kl_0o-IP-Us3cmI4jw7PUjn-a2bRgNkDeF62Huo2
 
 ## 開発環境
 
-- OS：macOS Monterey
+- OS：Linux(CentOS)
 - 言語：HTML,CSS,JavaScript,Ruby,SQL
 - フレームワーク：Ruby on Rails
 - JS ライブラリ：jQuery
