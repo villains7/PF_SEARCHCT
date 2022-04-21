@@ -1,5 +1,6 @@
 class Public::ProjectsController < ApplicationController
   before_action :authenticate_member!
+  before_action :ensure_correct_member, only: [:edit, :update]
 
   def index
     # トップページに案件閲覧数ランキングを表示
@@ -48,5 +49,9 @@ class Public::ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:title, :customer, :caption, :region, :start_year, :start_month, :start_day, :end_year, :end_month, :end_day, :vehicle_type, :lease_type, :body_shop, :salesman, :registration_number, :body_number, :insurance, :project_image, tag_ids: [])
+  end
+  
+  def ensure_correct_member
+    @project
   end
 end
