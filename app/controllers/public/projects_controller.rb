@@ -50,8 +50,12 @@ class Public::ProjectsController < ApplicationController
   def project_params
     params.require(:project).permit(:title, :customer, :caption, :region, :start_year, :start_month, :start_day, :end_year, :end_month, :end_day, :vehicle_type, :lease_type, :body_shop, :salesman, :registration_number, :body_number, :insurance, :project_image, tag_ids: [])
   end
-  
+
   def ensure_correct_member
-    @project
+    @project = Project.find(params[:id])
+    unless @project.member == current_member
+      redirect_to projects_path
+      flash[:alert] = "権限がありません"
+    end
   end
 end
