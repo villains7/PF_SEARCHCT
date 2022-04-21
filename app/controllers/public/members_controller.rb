@@ -1,7 +1,6 @@
 class Public::MembersController < ApplicationController
   before_action :authenticate_member!
   before_action :ensure_correct_member, only: [:edit, :update]
-  correct
   def show
     @member = Member.find(params[:id])
     @projects = @member.projects
