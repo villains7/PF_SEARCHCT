@@ -89,3 +89,10 @@ body {
 ul {
   list-style: none;
 }
+
+.profile_image {
+  width: 110px;
+  height: 110px;
+  text-align: center;
+  object-fit: cover;
+}

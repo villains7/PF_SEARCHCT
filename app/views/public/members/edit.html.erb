@@ -3,9 +3,9 @@
     <div class= "card-body">
       <h3>情報編集</h3>
         <%= form_with model: @member,url: member_path(@member),mathod: :patch do |f| %>
-        <div class= "row">
-          <div class="col-3">
-              <%= image_tag @member.get_profile_image(30,30),class:"img-fluid rounded-circle shadow";%>
+        <div class= "row mt-3">
+          <div class="col-3 text-center">
+              <%= image_tag @member.get_profile_image,class:"profile_image rounded-circle shadow";%>
           </div>
           <div class= "col-9">
             <label>名前</label>
