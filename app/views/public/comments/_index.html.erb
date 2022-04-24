@@ -1,18 +1,21 @@
 <h5>コメント</h5>
-<table>
+<table class= "table">
  <tbody>
   <% project.comments.each do |comment| %>
   <tr>
-   <td><%= comment.member.last_name %><%= comment.member.first_name %>さんからのコメント:<%= comment.comment %></td>
-    <% if comment.member == current_member %>
-    <td><%= link_to "削除",project_comment_path(project,comment.id), method: :delete, remote: true, class: "btn-sm btn-danger"%></td>
+   <td class="text-nowrap"><%= comment.created_at.strftime('%Y.%m.%d')%>...<%= comment.member.last_name %><%= comment.member.first_name %>さん</td>
+   <td></td>
+   <td></td>
   </tr>
   <tr>
+   <td><%= simple_format(h(comment.comment)) %></td>
+    <% if comment.member == current_member %>
+   <td class="text-nowrap"><%= link_to "削除",project_comment_path(project,comment.id), method: :delete, remote: true, class: "btn-sm btn-danger"%></td>
      <% if comment.score < -0.5 %>
       <td style= "background-color:red">感情スコア:<%= comment.score %></td>
       <script>alert('【警告】削除推奨のコメントです');</script>
      <% else %>
-      <td>感情スコア:<%= comment.score %></td>
+      <td class="text-nowrap">感情スコア:<%= comment.score %></td>
      <% end %>
    <% end %>
   <% end %>
