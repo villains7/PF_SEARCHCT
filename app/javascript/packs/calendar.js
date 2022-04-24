@@ -1,5 +1,6 @@
 import { Calendar } from '@fullcalendar/core';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import interactionPlugin from '@fullcalendar/interaction';
 
 
 
@@ -7,12 +8,15 @@ $(document).ready(function() {
   let calendarEl = document.getElementById("calendar");
    if (calendarEl != null) {
     let calendar = new Calendar(calendarEl, {
-      plugins: [dayGridPlugin],
+      plugins: [dayGridPlugin, interactionPlugin],
       locale: 'ja',
       height: 'auto',
       fixedWeekCount: false,
       buttonText: {
         today: '今日'
+      },
+      dateClick: function(info){
+
       },
         events :[
           {
