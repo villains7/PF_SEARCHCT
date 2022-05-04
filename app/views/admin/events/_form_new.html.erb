@@ -1,0 +1,12 @@
+<div class="row">
+  <%= form_with(model: @event,url: admin_event_path, remote: true) do |f| %>
+    <%= f.label :plan, "内容"%>
+    <%= f.text_field :plan, class: 'form-control mb-3', require: true %>
+
+  <div class="form-inline text-left">
+    <%= f.label :start,"日付", {class: 'control-label'} %>
+    <%= f.date_select :start,{default: Date.today}, class: 'form-control' %>
+  </div>
+    <%= f.submit "登録", class: "btn new_btn js-create-btn" %>
+  <% end %>
+</div>

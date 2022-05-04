@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get 'searches/search'
     get 'top' => 'searches#index'
     resources :projects, only: [:show, :destroy]
+    resources :events,only: [:index]
   end
 
   # 社員用
