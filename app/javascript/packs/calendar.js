@@ -9,6 +9,7 @@ $(document).ready(function() {
    if (calendarEl != null) {
     let calendar = new Calendar(calendarEl, {
       plugins: [dayGridPlugin, interactionPlugin],
+      //カレンダーのカスタマイズ
       locale: 'ja',
       height: 'auto',
       fixedWeekCount: false,
@@ -16,6 +17,30 @@ $(document).ready(function() {
         today: '今日'
       },
       dateClick: function(info){
+        const year = info.date.getFullYear();
+        const month = (info.date.getMonth() + 1);
+        const day = info.date.getDate();
+        
+        // ajaxでevent/newを着火させ、htmlを受け取る
+        $.ajax({
+          type: 'GET',
+          url: '/events/new',
+        }).done(function (res) {
+          //成功処理
+          //受け取ったhtmlをmodalのbodyの中に挿入する
+          $('.modal-body').html(res);
+          
+          //フォームの年、月、日を自動入力
+          $('#event_start_1i').val(year);
+          $('#event_start_2i').val(month);
+          $('#event_start_3i').val(day);
+          
+          $('#modal').fadeIn();
+          
+        }).fail(function (result) {
+          //失敗処理
+          alert("failed");
+        });
 
       },
         events :[
