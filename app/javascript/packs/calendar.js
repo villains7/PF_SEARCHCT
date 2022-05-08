@@ -20,7 +20,7 @@ $(document).ready(function() {
         const year = info.date.getFullYear();
         const month = (info.date.getMonth() + 1);
         const day = info.date.getDate();
-        
+
         // ajaxでevent/newを着火させ、htmlを受け取る
         $.ajax({
           type: 'GET',
@@ -29,21 +29,22 @@ $(document).ready(function() {
           //成功処理
           //受け取ったhtmlをmodalのbodyの中に挿入する
           $('.modal-body').html(res);
-          
+
           //フォームの年、月、日を自動入力
           $('#event_start_1i').val(year);
           $('#event_start_2i').val(month);
           $('#event_start_3i').val(day);
-          
+
           $('#modal').fadeIn();
-          
+
         }).fail(function (result) {
           //失敗処理
           alert("failed");
         });
 
       },
-        events :[
+        events : 'events.json',
+        events: [
           {
             start:'2022-03-18',
             end:'2022-03-18',
@@ -75,5 +76,8 @@ $(document).ready(function() {
     },
   });
   calendar.render();
+     $(".error").click(function(){
+        calendar.refetchEvents();
+    });
    }
 });
