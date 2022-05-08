@@ -1,9 +1,11 @@
 class Admin::EventsController < ApplicationController
   def index
+    @events = Event.all
   end
+
   def new
     @event = events.new
-    render plain: render_to_string(partial: 'form_new', layout: false,locals: {event: @event})
+    render plain: render_to_string(partial: '_form_new', layout: false,locals: {event: @event})
   end
 
   def create
